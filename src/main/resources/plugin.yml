@@ -1,0 +1,19 @@
+name: InfernalMobs
+version: '0.1.0'
+main: moe.velvet.infernalmobs.InfernalMobs
+api-version: 1.18
+prefix: 'InfernalMobs'
+load: STARTUP
+authors: [ Checksum, Niko ]
+website: velvet.moe
+depend:
+    - 'Vault'
+softdepend:
+    - 'LuckPerms'
+commands:
+    spawn_zombie:
+        description: Spawn a zombie at your location
+        usage: /spawn_zombie
+        aliases: [ spawn_zombie ]
+        permission: infernalmobs.spawn_zombie
+        category: infernalmobs
