@@ -1,5 +1,5 @@
 name: InfernalMobs
-version: '0.1.0'
+version: '0.0.1'
 main: moe.velvet.infernalmobs.InfernalMobs
 api-version: 1.18
 prefix: 'InfernalMobs'
@@ -11,9 +11,9 @@ depend:
 softdepend:
     - 'LuckPerms'
 commands:
-    spawn_zombie:
+    spawnzombie:
         description: Spawn a zombie at your location
-        usage: /spawn_zombie
-        aliases: [ spawn_zombie ]
+        usage: /spawnzombie
+        aliases: [ spawnzombie ]
         permission: infernalmobs.spawn_zombie
         category: infernalmobs
