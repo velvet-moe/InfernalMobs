@@ -1,20 +1,24 @@
 package moe.velvet.infernalmobs
 
-import org.bukkit.entity.Mob
-import org.bukkit.potion.PotionEffect
+import moe.velvet.infernalmobs.powers.Power
+import moe.velvet.infernalmobs.utils.Glob
+import org.bukkit.entity.LivingEntity
+import org.bukkit.entity.Entity
+import org.bukkit.metadata.FixedMetadataValue
 
-class InfernalMob(mob: Class<out Mob>, abilities: Array<String>, effects: Array<PotionEffect>) {
-    private val mob: Class<out Mob>
-    private val abilities: Array<String>
-    private val effects: Array<PotionEffect>
-
+data class InfernalMob(val entity: LivingEntity,
+                       val abilities: HashSet<Power> = HashSet(),
+                       val level: Int = 1) {
+    var lives = 0
     init {
-        this.mob = mob
-        this.abilities = abilities
-        this.effects = effects
+        entity.setMetadata("${Glob.Constants.INFERNAL_META_KEY}-dataclass", FixedMetadataValue(getInstance()!!, this))
     }
+}
 
-    fun getMob(): Class<out Mob> {
-        return mob.interfaces.first { it == Mob::class.java } as Class<out Mob>
-    }
+fun isInfernalMob(entity: Entity): Boolean {
+    return entity.hasMetadata("${Glob.Constants.INFERNAL_META_KEY}-dataclass")
+}
+
+fun getInfernalDataClass(entity: Entity): InfernalMob? {
+    return entity.getMetadata("${Glob.Constants.INFERNAL_META_KEY}-dataclass").firstOrNull()?.value() as? InfernalMob
 }

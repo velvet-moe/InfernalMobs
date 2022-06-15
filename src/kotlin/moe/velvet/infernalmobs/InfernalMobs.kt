@@ -1,9 +1,12 @@
 package moe.velvet.infernalmobs
 
-import moe.velvet.infernalmobs.commands.SpawnZombie
+import moe.velvet.infernalmobs.utils.EventListener
 import moe.velvet.infernalmobs.utils.Logger
 import org.bstats.bukkit.Metrics
+import org.bukkit.Bukkit
+import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
+
 
 @Suppress("unused")
 class InfernalMobs : JavaPlugin() {
@@ -11,8 +14,8 @@ class InfernalMobs : JavaPlugin() {
 
     override fun onEnable() {
         logger.info("Loading InfernalMobs...")
-        // Register commands
-        getCommand("spawnzombie")?.setExecutor(SpawnZombie)
+        // Register listeners
+        Bukkit.getPluginManager().registerEvents(EventListener(), this)
         // Register metrics
         Metrics(this, 15140)
         logger.info("InfernalMobs successfully loaded!")
@@ -21,4 +24,12 @@ class InfernalMobs : JavaPlugin() {
     override fun onDisable() {
         logger.info("Disabled")
     }
+}
+
+fun getInstance(): Plugin? {
+    val plugin: Plugin? = Bukkit.getServer().pluginManager.getPlugin("InfernalMobs")
+    if (plugin == null || plugin !is InfernalMobs) {
+        throw RuntimeException("'InfernalMobs' not found. 'InfernalMobs' plugin disabled?")
+    }
+    return plugin
 }

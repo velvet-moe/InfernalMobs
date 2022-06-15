@@ -1,4 +1,3 @@
 package moe.velvet.infernalmobs.powers
 
-class Wraith {
-}
+class Wraith
