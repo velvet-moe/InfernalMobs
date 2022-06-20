@@ -7,13 +7,13 @@ load: STARTUP
 authors: [ Checksum, Niko ]
 website: velvet.moe
 depend:
-    - 'Vault'
+  - 'Vault'
 softdepend:
-    - 'LuckPerms'
+  - 'LuckPerms'
 commands:
-    spawnzombie:
-        description: Spawn a zombie at your location
-        usage: /spawnzombie
-        aliases: [ spawnzombie ]
-        permission: infernalmobs.spawn_zombie
-        category: infernalmobs
+  spawninfernal:
+    description: Spawn an infernal zombie
+    usage: /spawninfernal
+    aliases: [ is ]
+    permission: infernalmobs.spawn_infernal
+    category: infernalmobs

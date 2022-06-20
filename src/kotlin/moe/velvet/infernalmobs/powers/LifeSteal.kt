@@ -1,20 +1,21 @@
 package moe.velvet.infernalmobs.powers
 
 import org.bukkit.attribute.Attribute
+import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
-import org.bukkit.event.entity.EntityDamageByEntityEvent
 
 class LifeSteal : Power {
     override val name: String
         get() = "life_steal"
 
-    override fun onDamageEntity(e: EntityDamageByEntityEvent) {
-        if ((0 until 10-scaleFactor).random() != 0 ) return
-        if (e.entity !is LivingEntity) return
-        val entity = e.entity as LivingEntity
+    override fun onDamageEntity(e: Entity, damager: Entity, amount: Double): Boolean {
+        //if ((0 until 10-scaleFactor).random() != 0 ) return true
+        if (damager !is LivingEntity) return true
 
-        val appliedHeals = if (e.damage > entity.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value) 0.0 else e.damage
+        val appliedHeals = if (amount > damager.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value) 0.0 else amount
 
-        entity.health = entity.health + appliedHeals
+        damager.health = damager.health + appliedHeals
+
+        return true
     }
 }

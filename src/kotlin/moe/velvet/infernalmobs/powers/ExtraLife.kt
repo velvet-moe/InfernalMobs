@@ -1,26 +1,26 @@
 package moe.velvet.infernalmobs.powers
 
 import moe.velvet.infernalmobs.getInfernalDataClass
-import org.bukkit.entity.LivingEntity
 import org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH
-import org.bukkit.event.entity.EntityDeathEvent
-import org.bukkit.event.entity.EntitySpawnEvent
+import org.bukkit.entity.Entity
+import org.bukkit.entity.LivingEntity
 
 class ExtraLife : Power {
     override val name: String
         get() = "extra_life"
 
-    override fun onSpawn(e: EntitySpawnEvent) {
-        if (e.entity !is LivingEntity) return
-        val entity = e.entity as LivingEntity
+    override fun onSpawn(e: Entity): Boolean {
+        if (e !is LivingEntity) return true
 
-        getInfernalDataClass(entity)!!.lives = (0 until 3+scaleFactor).random()
+        getInfernalDataClass(e)!!.lives = (0 until 3 + scaleFactor).random()
+        return true
     }
 
-    override fun onDeath(e: EntityDeathEvent) {
-        if (getInfernalDataClass(e.entity)!!.lives <= 0) return
-        e.isCancelled = true
-        e.entity.health = e.entity.getAttribute(GENERIC_MAX_HEALTH)!!.value
-
+    override fun onDeath(e: LivingEntity): Boolean {
+        if (getInfernalDataClass(e)!!.lives <= 0) return true
+        getInfernalDataClass(e)!!.lives--
+        e.health = e.getAttribute(GENERIC_MAX_HEALTH)!!.value
+        e.location.world.strikeLightningEffect(e.location)
+        return false // prevent death ( Event cancelled )
     }
 }

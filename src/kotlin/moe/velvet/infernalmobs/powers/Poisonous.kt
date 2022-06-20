@@ -1,7 +1,7 @@
 package moe.velvet.infernalmobs.powers
 
+import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
-import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
@@ -9,9 +9,10 @@ class Poisonous : Power {
     override val name: String
         get() = "poisonous"
 
-    override fun onDamageEntity(e: EntityDamageByEntityEvent) {
-        if (e.entity !is LivingEntity) return
+    override fun onDamageEntity(e: Entity, damager: Entity, amount: Double): Boolean {
+        if (e !is LivingEntity) return true
 
-        (e.entity as LivingEntity).addPotionEffect(PotionEffect(PotionEffectType.POISON, 20 * 5 * scaleFactor, 1))
+        e.addPotionEffect(PotionEffect(PotionEffectType.POISON, 20 * 5 * scaleFactor, 1))
+        return true
     }
 }

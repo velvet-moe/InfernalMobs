@@ -1,35 +1,45 @@
 package moe.velvet.infernalmobs.utils
 
-import com.destroystokyo.paper.event.entity.EntityRemoveFromWorldEvent
 import moe.velvet.infernalmobs.InfernalMob
 import moe.velvet.infernalmobs.getInfernalDataClass
 import moe.velvet.infernalmobs.isInfernalMob
+import org.bukkit.entity.Item
 import org.bukkit.entity.LivingEntity
 import org.bukkit.event.EventHandler
 
 import org.bukkit.event.Listener
-import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.event.entity.EntityDamageEvent
-import org.bukkit.event.entity.EntityDeathEvent
-import org.bukkit.event.entity.EntitySpawnEvent
-import org.bukkit.event.entity.EntityTargetEvent
+import org.bukkit.event.entity.*
 
 class EventListener : Listener {
     @EventHandler
     fun onEntitySpawn(e: EntitySpawnEvent) {
         // Assign infernal status if chance is met
-        if ((0 .. 100).random() > Glob.Constants.INFERNAL_CHANCE) return
+        if ((0..100).random() > Glob.Constants.INFERNAL_CHANCE) return
+        if (e.entity is Item) return
+        if (e.entity.entitySpawnReason == CreatureSpawnEvent.SpawnReason.CUSTOM) return
+        if (!Glob.Constants.ALLOWED_MOB_TYPES.contains(e.entity.type)) return
         val infernal = InfernalMob(e.entity as LivingEntity)
+
+        infernal.abilities = mutableListOf(
+            Glob.Constants.POWERS.values.random()
+        )
+
         // Trigger events
-        infernal.abilities.forEach { it.onSpawn(e) }
+        //TODO: Optimize ( for all events )
+        if (!(infernal.abilities.map { it.onSpawn(e.entity) }.contains(true))) {
+            e.isCancelled = true
+        }
     }
 
     @EventHandler
-    fun onEntityDamage(e: EntityDamageEvent) {
+    fun onEntityDamaged(e: EntityDamageByEntityEvent) {
         // Check if entity is infernal
         if (!isInfernalMob(e.entity)) return
         // Trigger events
-        getInfernalDataClass(e.entity)?.abilities?.forEach { it.onDamage(e) }
+        if (!(getInfernalDataClass(e.entity)?.abilities!!.map { it.onDamaged(e.entity, e.damager, e.damage) }
+                .contains(true))) {
+            e.isCancelled = true
+        }
     }
 
     @EventHandler
@@ -37,7 +47,15 @@ class EventListener : Listener {
         // Check if entity is infernal
         if (!isInfernalMob(e.entity)) return
         // Trigger events
-        getInfernalDataClass(e.entity)?.abilities?.forEach { it.onDeath(e) }
+        //if (!(getInfernalDataClass(e.entity)?.abilities!!.map { it.onDeath(e.entity) }.contains(true))) { e.isCancelled = true}
+
+        // Done differently to prevent a bug
+        for (ability in getInfernalDataClass(e.entity)?.abilities!!) {
+            if (ability.onDeath(e.entity)) {
+                e.isCancelled
+                break
+            }
+        }
     }
 
     @EventHandler
@@ -45,23 +63,28 @@ class EventListener : Listener {
         // Check if entity is infernal
         if (!isInfernalMob(e.entity)) return
         // Trigger events
-        getInfernalDataClass(e.entity)?.abilities?.forEach { it.onTarget(e) }
+        if (!(getInfernalDataClass(e.entity)?.abilities!!.map { it.onTarget(e.entity, e.reason) }.contains(true))) {
+            e.isCancelled = true
+        }
     }
 
-    @EventHandler
-    fun onEntityDespawn(e: EntityRemoveFromWorldEvent) {
-        // Check if entity is infernal
-        if (!isInfernalMob(e.entity)) return
-        // Trigger events
-        getInfernalDataClass(e.entity)?.abilities?.forEach { it.onDespawn(e) }
-    }
+//    @EventHandler
+//    fun onEntityDespawn(e: EntityRemoveFromWorldEvent) {
+//        // Check if entity is infernal
+//        if (!isInfernalMob(e.entity)) return
+//        // Trigger events
+//        getInfernalDataClass(e.entity)?.abilities!!.map { it.onDespawn(e.entity) }
+//    }
 
     @EventHandler
     fun onDamageEntity(e: EntityDamageByEntityEvent) {
         // Check if entity is infernal
         if (!isInfernalMob(e.damager)) return
         // Trigger events
-        getInfernalDataClass(e.damager)?.abilities?.forEach { it.onDamageEntity(e) }
+        if (!(getInfernalDataClass(e.damager)?.abilities!!.map { it.onDamageEntity(e.entity, e.damager, e.damage) }
+                .contains(true))) {
+            e.isCancelled = true
+        }
     }
 }
 

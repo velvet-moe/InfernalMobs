@@ -5,17 +5,19 @@ import org.bukkit.entity.LivingEntity
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class Sprint : Power {
+class Berserk : Power {
     override val name: String
-        get() = "sprint"
+        get() = "berserk"
 
     override fun onSpawn(e: Entity): Boolean {
-        (e as LivingEntity).addPotionEffect(
+        if (e !is LivingEntity) return true
+
+        e.addPotionEffect(
             PotionEffect(
-                PotionEffectType.SPEED,
+                PotionEffectType.INCREASE_DAMAGE,
                 Integer.MAX_VALUE,
-                0 + scaleFactor,
-                true,
+                1 * scaleFactor,
+                false,
                 false
             )
         )
