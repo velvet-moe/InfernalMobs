@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler
 
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.*
+import org.bukkit.event.player.PlayerItemConsumeEvent
 
 class EventListener : Listener {
     // For infernal mobs
@@ -114,9 +115,22 @@ class EventListener : Listener {
                         LootType.Potion -> {
 
                         }
+                        LootType.Item -> {
+
+                        }
                     }
                 }
             }
+        }
+    }
+
+    @EventHandler
+    fun onMunch(e: PlayerItemConsumeEvent) {
+        if (isLoot(e.item)) {
+            e.player.sendMessage("§c[Infernal Mobs] Eating charms is prevented")
+            e.player.world.strikeLightningEffect(e.player.location)
+            e.isCancelled = true
+            return
         }
     }
 
@@ -154,6 +168,9 @@ class EventListener : Listener {
                             }
                         }
                         LootType.Potion -> {
+
+                        }
+                        LootType.Item -> {
 
                         }
                     }

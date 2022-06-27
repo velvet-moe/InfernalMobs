@@ -38,6 +38,9 @@ class LootEffectRunner : BukkitRunnable(){
                                 loot.userEffects?.let { it1 -> p.addPotionEffects(it1)}
                             }
                         }
+                        LootType.Item -> {
+
+                        }
                     }
                 }
             }

@@ -1,7 +1,6 @@
 # Weight is `1` if not specified
 # All time is in seconds
 # Potion effects must be in https://jd.papermc.io/paper/1.19/org/bukkit/potion/PotionEffect.html
-# Enchantments must be in https://jd.papermc.io/paper/1.19/org/bukkit/enchantments/Enchantment.html
 # Example
 # - Example_Charm:
 #      name: "Example Charm"
@@ -19,7 +18,7 @@
 #            level: 1
 #            duration: 2
 #      enchantments:
-#        - Durability:
+#        - Unbreaking:
 #            level: 1
 
 
@@ -66,7 +65,7 @@ loot:
       item: "Iron_axe"
       type: "Weapon"
       enchantments:
-        - Damage_undead:
+        - SMITE:
             level: 1
   - Flame_bow:
       name: "§cFlame §6Bow"
@@ -75,37 +74,51 @@ loot:
       item: "Bow"
       type: "Weapon"
       enchantments:
-        - arrow_fire:
+        - FLAME:
             level: 2
-        - arrow_infinite:
+        - INFINITY:
             level: 1
-  - Super_Helmet:
-      name: "Super Helmet"
+  - sword_of_fortune:
+      item: "IRON_SWORD"
+      name: "&6Sword of Fortune"
+      type: "WEAPON"
       lore:
-        - "is super"
-      item: "Iron_Helmet"
-      type: "Armor"
+        - "&eMay the luck be ever in your favor"
       enchantments:
-        - DURABILITY:
+        - LOOTING:
+            level: 4
+  - wacker:
+      name: "&cWacker"
+      item: "WOODEN_SWORD"
+      type: "WEAPON"
+      lore:
+        - "Wack 'em back!"
+      enchantments:
+        - KNOCKBACK:
             level: 10
-      user_effects:
-        - Damage_Resistance:
+  - diamond_drop:
+      item: "DIAMOND"
+      type: "ITEM"
+      amount: 30
+  - arthropod_bane:
+      name: "&8Arthropod Bane"
+      item: "DIAMOND_SWORD"
+      type: "WEAPON"
+      lore:
+        - "&7Slays spiders like a hot knife through butter"
+      enchantments:
+        BANE_OF_ARTHROPODS:
+          level: 8
+  - the_excalibur:
+      name: "&fThe Excalibur"
+      item: "DIAMOND_SWORD"
+      type: "WEAPON"
+      lore:
+        - "&7King Author''s sword."
+      enchantments:
+        - SHARPNESS:
             level: 5
-      revenge_effects:
-        - Wither:
+        - UNBREAKING:
             level: 5
-            duration: 5
-      hit_effects:
-        - Glowing:
-            level: 10
-            duration: 20
-  -  Glowing_potion:
-       name: "Glowing Potion"
-       type: "Potion"
-       lore:
-         - "g l o w"
-       item: "Splash_Potion"
-       potion_effects:
-         - Glowing:
-             level: 1
-             duration: 20
+        - KNOCKBACK:
+            level: 3

@@ -12,8 +12,9 @@ import kotlin.properties.Delegates
 
 class Loot {
     lateinit var id: String
-    lateinit var name: String
+    var name: String? = null
     lateinit var type: LootType
+    var amount by Delegates.notNull<Int>()
     var weight by Delegates.notNull<Int>()
     var lore: List<Component>? = null
     var userEffects: List<PotionEffect>? = null // effects on the user of the loot
@@ -25,14 +26,14 @@ class Loot {
 }
 
 fun createLoot(type: Loot, amount: Int = 1): ItemStack {
-    val item = ItemStack(type.material, amount)
+    val item = ItemStack(type.material, amount * type.amount)
     val meta = item.itemMeta
     if (meta is PotionMeta) {
         type.potioneffects?.forEach {
             meta.addCustomEffect(it, true)
         }
     }
-    meta.displayName(Component.text(type.name))
+    type.name?.let { meta.displayName(Component.text(it))}
     //getInstance().logger.info(type.Enchantments.toString())
     type.enchantments?.forEach {
         meta.addEnchant(it.first, it.second, true)
@@ -65,5 +66,6 @@ enum class LootType {
     Charm,
     Weapon,
     Armor,
-    Potion
+    Potion,
+    Item
 }
