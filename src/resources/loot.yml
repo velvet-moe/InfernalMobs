@@ -23,56 +23,56 @@
 
 
 loot:
-  - Sprint_Charm:
+  - sprint_charm:
       name: "§bSprint Charm"
-      type: "Charm"
+      item: "FEATHER"
+      type: "CHARM"
       user_effects:
-        - Speed:
+        - SPEED:
             level: 1
-      item: "Feather"
-  - Hunger_Charm:
+  - hunger_charm:
       name: "§bHunger Charm"
-      type: "Charm"
-      item: "Golden_Apple"
+      item: "GOLDEN_APPLE"
+      type: "CHARM"
       user_effects:
         - Saturation:
             level: 1
-  - Fire_Charm:
+  - fire_charm:
       name: "§bFire Charm"
-      type: "Charm"
-      item: "Blaze_Rod"
+      item: "BLAZE_ROD"
+      type: "CHARM"
       user_effects:
-        - Fire_Resistance:
+        - FIRE_RESISTANCE:
             level: 1
-  - Glowing_Charm:
+  - glowing_charm:
       name: "Glowing Charm"
-      type: "Charm"
-      item: "Lantern"
+      item: "LANTERN"
+      type: "CHARM"
       user_effects:
         - Glowing:
             level: 1
-  - Sharp_Stick:
+  - sharp_Stick:
       name: "Sharp Stick"
-      type: "Weapon"
-      item: "Stick"
+      item: "STICK"
+      type: "WEAPON"
       enchantments:
-        - Damage_all:
-            level: 1
-  - Murder_axe:
+          - SHARPNESS:
+              level: 1
+  - murder_axe:
       name: "§2Murder Axe"
+      item: "IRON_AXE"
+      type: "WEAPON"
       lore:
         - "§aFor felling the undead!"
-      item: "Iron_axe"
-      type: "Weapon"
       enchantments:
         - SMITE:
             level: 1
-  - Flame_bow:
+  - flame_bow:
       name: "§cFlame §6Bow"
+      item: "BOW"
+      type: "WEAPON"
       lore:
         - "§eShoots fire to the heavens!"
-      item: "Bow"
-      type: "Weapon"
       enchantments:
         - FLAME:
             level: 2
