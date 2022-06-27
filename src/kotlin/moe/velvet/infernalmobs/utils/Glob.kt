@@ -7,6 +7,8 @@ object Glob {
     object Constants {
         const val INFERNAL_META_KEY = "infernal_meta"
         const val INFERNAL_CHANCE = 10 // out of 100
+        const val LOOT_DROP_CHANCE = 5
+        const val INFERNAL_NAME_PREFIX = "§cInfernal "
 
         // const val SCALING_FACTOR = 1
         val ALLOWED_MOB_TYPES = listOf(
@@ -68,5 +70,9 @@ object Glob {
             Withering().name to Withering(),
             Wraith().name to Wraith()
         )
+        val ALLOWED_CHARM_SLOTS = listOf(
+            0, 1, 8, 7, 6, 5, 17, 40
+        ) // 40 is offhand
+        val MAINHAND_CHARMS_ENABLED = true
     }
 }

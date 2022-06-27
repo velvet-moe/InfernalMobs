@@ -4,7 +4,7 @@ main: moe.velvet.infernalmobs.InfernalMobs
 api-version: 1.19
 prefix: 'InfernalMobs'
 load: STARTUP
-authors: [ Checksum, Niko ]
+author: sargon64
 website: velvet.moe
 depend:
   - 'Vault'
@@ -16,4 +16,9 @@ commands:
     usage: /spawninfernal
     aliases: [ is ]
     permission: infernalmobs.spawn_infernal
+    category: infernalmobs
+  spawnloot:
+    description: spawn loot
+    usage: /spawnloot
+    permission: infernalmobs.spawn_loot
     category: infernalmobs

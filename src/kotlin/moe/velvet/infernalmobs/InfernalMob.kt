@@ -2,6 +2,7 @@ package moe.velvet.infernalmobs
 
 import moe.velvet.infernalmobs.powers.Power
 import moe.velvet.infernalmobs.utils.Glob
+import net.kyori.adventure.text.Component
 import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 import org.bukkit.metadata.FixedMetadataValue
@@ -16,6 +17,7 @@ data class InfernalMob(
 
     init {
         entity.setMetadata("${Glob.Constants.INFERNAL_META_KEY}-dataclass", FixedMetadataValue(getInstance(), this))
+        entity.customName(Component.text("${Glob.Constants.INFERNAL_NAME_PREFIX}${entity.name}"))
     }
 }
 

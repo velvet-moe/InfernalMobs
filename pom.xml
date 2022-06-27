@@ -158,10 +158,16 @@
             <version>${kotlin.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>0.10.2</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.reflections</groupId>-->
+<!--            <artifactId>reflections</artifactId>-->
+<!--            <version>0.10.2</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>com.zaxxer</groupId>-->
+<!--            <artifactId>HikariCP</artifactId>-->
+<!--            <version>5.0.1</version>-->
+<!--        </dependency>-->
     </dependencies>
 </project>

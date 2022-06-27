@@ -12,7 +12,7 @@ class ExtraLife : Power {
     override fun onSpawn(e: Entity): Boolean {
         if (e !is LivingEntity) return true
 
-        getInfernalDataClass(e)!!.lives = (0 until 3 + scaleFactor).random()
+        getInfernalDataClass(e)!!.lives = (1 until 3 + scaleFactor).random()
         return true
     }
 

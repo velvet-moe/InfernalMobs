@@ -1,0 +1,111 @@
+# Weight is `1` if not specified
+# All time is in seconds
+# Potion effects must be in https://jd.papermc.io/paper/1.19/org/bukkit/potion/PotionEffect.html
+# Enchantments must be in https://jd.papermc.io/paper/1.19/org/bukkit/enchantments/Enchantment.html
+# Example
+# - Example_Charm:
+#      name: "Example Charm"
+#      type: "Charm"
+#      item: "Stick"
+#      user_effects:
+#        - Glowing:
+#            level: 1
+#      revenge_effects:
+#        - Glowing:
+#            level: 1
+#            duration: 2
+#      hit_effects:
+#        - Glowing:
+#            level: 1
+#            duration: 2
+#      enchantments:
+#        - Durability:
+#            level: 1
+
+
+loot:
+  - Sprint_Charm:
+      name: "§bSprint Charm"
+      type: "Charm"
+      user_effects:
+        - Speed:
+            level: 1
+      item: "Feather"
+  - Hunger_Charm:
+      name: "§bHunger Charm"
+      type: "Charm"
+      item: "Golden_Apple"
+      user_effects:
+        - Saturation:
+            level: 1
+  - Fire_Charm:
+      name: "§bFire Charm"
+      type: "Charm"
+      item: "Blaze_Rod"
+      user_effects:
+        - Fire_Resistance:
+            level: 1
+  - Glowing_Charm:
+      name: "Glowing Charm"
+      type: "Charm"
+      item: "Lantern"
+      user_effects:
+        - Glowing:
+            level: 1
+  - Sharp_Stick:
+      name: "Sharp Stick"
+      type: "Weapon"
+      item: "Stick"
+      enchantments:
+        - Damage_all:
+            level: 1
+  - Murder_axe:
+      name: "§2Murder Axe"
+      lore:
+        - "§aFor felling the undead!"
+      item: "Iron_axe"
+      type: "Weapon"
+      enchantments:
+        - Damage_undead:
+            level: 1
+  - Flame_bow:
+      name: "§cFlame §6Bow"
+      lore:
+        - "§eShoots fire to the heavens!"
+      item: "Bow"
+      type: "Weapon"
+      enchantments:
+        - arrow_fire:
+            level: 2
+        - arrow_infinite:
+            level: 1
+  - Super_Helmet:
+      name: "Super Helmet"
+      lore:
+        - "is super"
+      item: "Iron_Helmet"
+      type: "Armor"
+      enchantments:
+        - DURABILITY:
+            level: 10
+      user_effects:
+        - Damage_Resistance:
+            level: 5
+      revenge_effects:
+        - Wither:
+            level: 5
+            duration: 5
+      hit_effects:
+        - Glowing:
+            level: 10
+            duration: 20
+  -  Glowing_potion:
+       name: "Glowing Potion"
+       type: "Potion"
+       lore:
+         - "g l o w"
+       item: "Splash_Potion"
+       potion_effects:
+         - Glowing:
+             level: 1
+             duration: 20
