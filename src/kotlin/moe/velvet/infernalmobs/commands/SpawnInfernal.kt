@@ -99,7 +99,7 @@ class SpawnInfernal : TabExecutor {
                 entity2
             )
         }
-
+        Glob.InfernalList.add(mob2.entity)
         return true
     }
 }

@@ -33,7 +33,15 @@ object LootFactory {
                     var weight = 1
                     if (items.contains("weight")) { weight = items["weight"] as Int }
                     var amount = 1
-                    if (items.contains("amount")) { amount = items["amount"] as Int }
+                    if (items.contains("amount")) {
+                        val data = items["amount"].toString()
+                        if (data.contains("-")) {
+                            var p = data.split("-")
+                            amount = (p[0].toInt()..p[1].toInt()).random()
+                        } else {
+                            amount = data.toIntOrNull() ?: 1
+                        }
+                    }
                     val type = enumValueOf<LootType>((items["type"] as String?)!!.lowercase()
                         .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() })
                     val itemMaterial = enumValueOf<Material>((items["item"] as String?)!!.uppercase())
@@ -57,7 +65,7 @@ object LootFactory {
                                 //logger.info(l.key.toString())
                                 val effectType = PotionEffectType.getByKey(NamespacedKey.minecraft((l.key as String?)!!.lowercase()))
                                 val strength = (l.value as Map<*, *>)["level"] as Int?
-                                userEffects.add(PotionEffect(effectType!!, 20 * 10, strength!! - 1, true, true))
+                                userEffects.add(PotionEffect(effectType!!, 20 * 10, strength!! - 1))
                             }
                         }
                     }
@@ -69,7 +77,7 @@ object LootFactory {
                                 val effectType = PotionEffectType.getByKey(NamespacedKey.minecraft((l.key as String?)!!.lowercase()))
                                 val strength = (l.value as Map<*, *>)["level"] as Int?
                                 val duration = (l.value as Map<*, *>)["duration"] as Int?
-                                revengeEffects.add(PotionEffect(effectType!!, 20 * duration!!, strength!! - 1, true, true))
+                                revengeEffects.add(PotionEffect(effectType!!, 20 * duration!!, strength!! - 1))
                             }
                         }
                     }
@@ -81,7 +89,7 @@ object LootFactory {
                                 val effectType = PotionEffectType.getByKey(NamespacedKey.minecraft((l.key as String?)!!.lowercase()))
                                 val strength = (l.value as Map<*, *>)["level"] as Int?
                                 val duration = (l.value as Map<*, *>)["duration"] as Int?
-                                hitEffects.add(PotionEffect(effectType!!, 20 * duration!!, strength!! - 1, true, true))
+                                hitEffects.add(PotionEffect(effectType!!, 20 * duration!!, strength!! - 1))
                             }
                         }
                     }
@@ -93,17 +101,54 @@ object LootFactory {
                                 val effectType = PotionEffectType.getByKey(NamespacedKey.minecraft((l.key as String?)!!.lowercase()))
                                 val strength = (l.value as Map<*, *>)["level"] as Int?
                                 val duration = (l.value as Map<*, *>)["duration"] as Int?
-                                potionEffects.add(PotionEffect(effectType!!, 20 * duration!!, strength!! - 1, true, true))
+                                potionEffects.add(PotionEffect(effectType!!, 20 * duration!!, strength!! - 1))
                             }
                         }
                     }
-                    val enchantments: MutableList<Pair<Enchantment, Int>> = mutableListOf()
+                    val consumeEffects: MutableList<PotionEffect> = mutableListOf()
+                    if (items.contains("consume_effects")) {
+                        for (k in items["consume_effects"] as List<*>) {
+                            for (l in k as Map<*, *>) {
+                                //logger.info(l.key.toString())
+                                val effectType = PotionEffectType.getByKey(NamespacedKey.minecraft((l.key as String?)!!.lowercase()))
+                                val strength = (l.value as Map<*, *>)["level"] as Int?
+                                val duration = (l.value as Map<*, *>)["duration"] as Int?
+                                consumeEffects.add(PotionEffect(effectType!!, 20 * duration!!, strength!! - 1))
+                            }
+                        }
+                    }
+                    // type, (chance, (range of possible leves))
+                    val enchantments: MutableList<Pair<Enchantment, Pair<Int, List<Int>>>> = mutableListOf()
                     if (items.contains("enchantments")) {
                         for (k in items["enchantments"] as List<*>) {
                             for (l in k as Map<*, *>) {
                                 val enchantmentType = Enchantment.getByKey(NamespacedKey.minecraft((l.key as String?)!!.lowercase()))
                                 //getInstance().logger.info(enchantmentType.toString())
-                                enchantments.add(Pair(enchantmentType!!, ((l.value as Map<*,*>)["level"] as Int?)!!))
+                                var level: MutableList<Int>
+                                val data = ((l.value as Map<*, *>)["level"].toString())
+//                                if ((l.value as Map<*, *>).contains("chance")) {
+//                                    if ((0..100).random() >= ((l.value as Map<*, *>)["chance"] as Int)) {
+//                                        continue
+//                                    }
+//                                }
+//                                    var enchantmentLevel = ((l.value as Map<*, *>)["level"] as String)
+//                                    val l = enchantmentLevel.split("-")
+//                                    ((l[0].toInt())..(l[1].toInt())).random()
+//
+//                                    var enchantmentLevel = ((l.value as Map<*, *>)["level"] as String).toInt()
+//                                    level = enchantmentLevel
+//                                }
+                                if (data.contains("-")) {
+                                    var p = data.split("-")
+                                    level = (p[0].toInt()..p[1].toInt()).toMutableList()
+                                } else {
+                                    level = mutableListOf(data.toIntOrNull() ?: 1)
+                                }
+                                var chance = 100
+                                if ((l.value as Map<*, *>).contains("chance")) {
+                                    chance = ((l.value as Map<*, *>)["chance"] as Int)
+                                }
+                                enchantments.add(Pair(enchantmentType!!, Pair(chance, level.toList())))
                             }
                         }
                     }
@@ -119,10 +164,11 @@ object LootFactory {
                     loot.potioneffects = potionEffects
                     loot.userEffects = userEffects
                     loot.revengeEffects = revengeEffects
+                    loot.consumeEffects = consumeEffects
                     loot.hitEffects = hitEffects
                     loot.enchantments = enchantments
                     table[id.lowercase()] = loot
-                    (0..weight).forEach { _ -> weights.add(id.lowercase()) }
+                    (0 until weight).forEach { _ -> weights.add(id.lowercase()) }
                 }
             }
         }

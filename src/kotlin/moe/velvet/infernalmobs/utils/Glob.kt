@@ -1,78 +1,58 @@
 package moe.velvet.infernalmobs.utils
 
+import moe.velvet.infernalmobs.getInstance
 import moe.velvet.infernalmobs.powers.*
+import org.bukkit.entity.Entity
 import org.bukkit.entity.EntityType
 
 object Glob {
     object Constants {
-        const val INFERNAL_META_KEY = "infernal_meta"
-        const val INFERNAL_CHANCE = 10 // out of 100
-        const val LOOT_DROP_CHANCE = 5
-        const val INFERNAL_NAME_PREFIX = "§cInfernal "
-
+        val INFERNAL_CHANCE: Int
+        val LOOT_DROP_CHANCE: Int
+        val INFERNAL_NAME_PREFIX: String
+        val INFERNAL_NAME_SUFFIX: String
         // const val SCALING_FACTOR = 1
-        val ALLOWED_MOB_TYPES = listOf(
-            EntityType.ZOMBIE,
-            EntityType.SPIDER,
-            EntityType.CAVE_SPIDER,
-            EntityType.CREEPER,
-            EntityType.DROWNED,
-            EntityType.SKELETON,
-            EntityType.WITHER_SKELETON,
-            EntityType.BLAZE,
-            EntityType.ENDERMAN,
-            EntityType.ENDERMITE,
-            EntityType.EVOKER,
-            EntityType.GHAST,
-            EntityType.GUARDIAN,
-            EntityType.HOGLIN,
-            EntityType.HUSK,
-            EntityType.MAGMA_CUBE,
-            EntityType.PHANTOM,
-            EntityType.PIGLIN,
-            EntityType.PIGLIN_BRUTE,
-            EntityType.PILLAGER,
-            EntityType.PUFFERFISH,
-            EntityType.RAVAGER,
-            EntityType.SHULKER,
-            EntityType.SILVERFISH,
-            EntityType.SLIME,
-            EntityType.STRAY,
-            EntityType.VEX,
-            EntityType.VINDICATOR,
-            EntityType.WARDEN,
-            EntityType.WITCH,
-            EntityType.WITHER_SKELETON,
-            EntityType.ZOGLIN,
-            EntityType.ZOMBIE_VILLAGER,
-            EntityType.ZOMBIFIED_PIGLIN,
-            EntityType.ENDER_DRAGON,
-            EntityType.WITHER,
-        )
-        val POWERS = hashMapOf(
-            Armoured().name to Armoured(),
-            Berserk().name to Berserk(),
-            Blinding().name to Blinding(),
-            Bulwark().name to Bulwark(),
-            ExtraLife().name to ExtraLife(),
-            LifeSteal().name to LifeSteal(),
-            Poisonous().name to Poisonous(),
-            Quicksand().name to Quicksand(),
-            Rust().name to Rust(),
-            Sapper().name to Sapper(),
-            Sprint().name to Sprint(),
-            Vengeance().name to Vengeance(),
-            Storm().name to Storm(),
-            Ender().name to Ender(),
-            Potions().name to Potions(),
-            Webber().name to Webber(),
-            Weakness().name to Weakness(),
-            Withering().name to Withering(),
-            Wraith().name to Wraith()
-        )
-        val ALLOWED_CHARM_SLOTS = listOf(
-            0, 1, 8, 7, 6, 5, 17, 40
-        ) // 40 is offhand
-        val MAINHAND_CHARMS_ENABLED = true
+        val ALLOWED_MOB_TYPES: List<EntityType>
+        val POWERS: HashMap<String, Power>
+        val ALLOWED_CHARM_SLOTS: List<Int> // 40 is offhand
+        val MAINHAND_CHARMS_ENABLED: Boolean
+
+        init {
+            val config = getInstance().config
+            this.INFERNAL_CHANCE = config.getInt("infernalSpawnChance")
+            this.LOOT_DROP_CHANCE = config.getInt("globalLootDropChance")
+            this.INFERNAL_NAME_PREFIX = config.getString("infernalNamePrefix") ?: ""
+            this.INFERNAL_NAME_SUFFIX = config.getString("infernalNameSuffix") ?: ""
+            this.ALLOWED_MOB_TYPES = config.getStringList("allowedInfernalMobTypes").map { enumValueOf(it) }
+            this.POWERS = hashMapOf(
+                Armoured().name to Armoured(),
+                Berserk().name to Berserk(),
+                Blinding().name to Blinding(),
+                Bulwark().name to Bulwark(),
+                ExtraLife().name to ExtraLife(),
+                LifeSteal().name to LifeSteal(),
+                Poisonous().name to Poisonous(),
+                Quicksand().name to Quicksand(),
+                Rust().name to Rust(),
+                Sapper().name to Sapper(),
+                Sprint().name to Sprint(),
+                Vengeance().name to Vengeance(),
+                Storm().name to Storm(),
+                Ender().name to Ender(),
+                Potions().name to Potions(),
+                Webber().name to Webber(),
+                Weakness().name to Weakness(),
+                Withering().name to Withering(),
+                Wraith().name to Wraith()
+            )
+            val confPowers = config.getStringList("allowedInfernalTypes")
+            this.POWERS.forEach {
+                if (confPowers.map { it.lowercase() }.contains(it.key)) return@forEach
+                this.POWERS.remove(it.key)
+            }
+            this.ALLOWED_CHARM_SLOTS = config.getIntegerList("allowedCharmSlots")
+            this.MAINHAND_CHARMS_ENABLED = config.getBoolean("mainHandCharmsEnabled")
+        }
     }
+    var InfernalList: MutableList<Entity> = mutableListOf()
 }

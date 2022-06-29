@@ -1,11 +1,11 @@
 package moe.velvet.infernalmobs.utils
 
 import moe.velvet.infernalmobs.*
+import org.bukkit.Sound
 import org.bukkit.entity.Item
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
-
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.*
 import org.bukkit.event.player.PlayerItemConsumeEvent
@@ -30,6 +30,7 @@ class EventListener : Listener {
         if (!(infernal.abilities.map { it.onSpawn(e.entity) }.contains(true))) {
             e.isCancelled = true
         }
+        Glob.InfernalList.add(e.entity)
     }
 
     @EventHandler
@@ -53,6 +54,7 @@ class EventListener : Listener {
                 return
             }
         }
+        getInfernalDataClass(e.entity)!!.bossbar.removeAll()
         if ((0..100).random() < Glob.Constants.LOOT_DROP_CHANCE) {
             val drop = createRandomLoot()
             e.entity.world.dropItemNaturally(e.entity.location, drop)
@@ -112,12 +114,7 @@ class EventListener : Listener {
                                 loot.revengeEffects?.let { it1 -> (e.damager as LivingEntity).addPotionEffects(it1) }
                             }
                         }
-                        LootType.Potion -> {
-
-                        }
-                        LootType.Item -> {
-
-                        }
+                        else -> {}
                     }
                 }
             }
@@ -127,10 +124,21 @@ class EventListener : Listener {
     @EventHandler
     fun onMunch(e: PlayerItemConsumeEvent) {
         if (isLoot(e.item)) {
-            e.player.sendMessage("§c[Infernal Mobs] Eating charms is prevented")
-            e.player.world.strikeLightningEffect(e.player.location)
-            e.isCancelled = true
-            return
+            when (getLoot(e.item)!!.type) {
+                LootType.Food -> {
+                    getLoot(e.item)!!.consumeEffects?.let { e.player.addPotionEffects(it) }
+                    e.player.world.playSound(e.player.location, Sound.ENTITY_GOAT_PREPARE_RAM, 1.0F, 1.0F)
+                }
+                LootType.Potion -> {
+                    return
+                }
+                else -> {
+                    e.player.sendMessage("§c[Infernal Mobs] Eating charms is prevented")
+                    e.player.world.strikeLightningEffect(e.player.location)
+                    e.isCancelled = true
+                    return
+                }
+            }
         }
     }
 
@@ -158,7 +166,7 @@ class EventListener : Listener {
                             if (Glob.Constants.ALLOWED_CHARM_SLOTS.contains(it.index)) {
                                 loot.hitEffects?.let { it1 -> (e.entity as LivingEntity).addPotionEffects(it1) }
                             }
-                            if (Glob.Constants.MAINHAND_CHARMS_ENABLED && (e.entity as Player).inventory.heldItemSlot == it.index) {
+                            if (Glob.Constants.MAINHAND_CHARMS_ENABLED && (e.damager as Player).inventory.heldItemSlot == it.index) {
                                 loot.hitEffects?.let { it1 -> (e.entity as LivingEntity).addPotionEffects(it1) }
                             }
                         }
@@ -167,12 +175,7 @@ class EventListener : Listener {
                                 loot.hitEffects?.let { it1 -> (e.entity as LivingEntity).addPotionEffects(it1) }
                             }
                         }
-                        LootType.Potion -> {
-
-                        }
-                        LootType.Item -> {
-
-                        }
+                        else -> {}
                     }
                 }
             }

@@ -20,7 +20,8 @@ class Loot {
     var userEffects: List<PotionEffect>? = null // effects on the user of the loot
     var revengeEffects: List<PotionEffect>? = null // effects on people who damage the user
     var hitEffects: List<PotionEffect>? = null // effects on people who are damaged by the user
-    var enchantments: List<Pair<Enchantment, Int>>? = null
+    var consumeEffects: List<PotionEffect>? = null
+    var enchantments: List<Pair<Enchantment, Pair<Int, List<Int>>>>? = null
     var potioneffects: List<PotionEffect>? = null
     lateinit var material: Material // the material (icon) of the loot
 }
@@ -36,7 +37,8 @@ fun createLoot(type: Loot, amount: Int = 1): ItemStack {
     type.name?.let { meta.displayName(Component.text(it))}
     //getInstance().logger.info(type.Enchantments.toString())
     type.enchantments?.forEach {
-        meta.addEnchant(it.first, it.second, true)
+        if ((0..100).random() >= it.second.first) return@forEach
+        meta.addEnchant(it.first, it.second.second.random(), true)
     }
     //getInstance().logger.info(type.lore.toString())
     meta.lore(type.lore)
@@ -67,5 +69,6 @@ enum class LootType {
     Weapon,
     Armor,
     Potion,
-    Item
+    Item,
+    Food
 }
