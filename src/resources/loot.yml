@@ -1,124 +1,2988 @@
 # Weight is `1` if not specified
 # All time is in seconds
 # Potion effects must be in https://jd.papermc.io/paper/1.19/org/bukkit/potion/PotionEffect.html
-# Example
-# - Example_Charm:
-#      name: "Example Charm"
-#      type: "Charm"
-#      item: "Stick"
-#      user_effects:
-#        - Glowing:
-#            level: 1
-#      revenge_effects:
-#        - Glowing:
-#            level: 1
-#            duration: 2
-#      hit_effects:
-#        - Glowing:
-#            level: 1
-#            duration: 2
-#      enchantments:
-#        - Unbreaking:
-#            level: 1
-
+# See the first charm for a basic rundown of configuration.
 
 loot:
-  - sprint_charm:
-      name: "§bSprint Charm"
-      item: "FEATHER"
-      type: "CHARM"
-      user_effects:
-        - SPEED:
-            level: 1
-  - hunger_charm:
-      name: "§bHunger Charm"
-      item: "GOLDEN_APPLE"
-      type: "CHARM"
-      user_effects:
-        - Saturation:
-            level: 1
-  - fire_charm:
-      name: "§bFire Charm"
-      item: "BLAZE_ROD"
-      type: "CHARM"
-      user_effects:
-        - FIRE_RESISTANCE:
-            level: 1
-  - glowing_charm:
-      name: "Glowing Charm"
-      item: "LANTERN"
-      type: "CHARM"
-      user_effects:
-        - Glowing:
-            level: 1
-  - sharp_Stick:
-      name: "Sharp Stick"
-      item: "STICK"
-      type: "WEAPON"
-      enchantments:
-          - SHARPNESS:
-              level: 1
+  - sprint_charm: # This is the key of the loot
+    name: "§bSprint Charm" # This is the name of the loot
+    item: "FEATHER" # This is the item corresponding to the key
+    type: "CHARM" # This is the type of the loot (ITEM, ARMOR, CHARM, WEAPON, POTION, FOOD)
+    lore: # This is a list of the lore of the item
+      - "§7Gives you a §bSprint §7effect"
+    user_effects: # This is a list of effects that will be applied to the player when the loot is in a effect slot
+      - SPEED: # This is the key of the effect
+          level: 1   
+   
+  # loot:
+  #   '1':
+  #     item: IRON_AXE
+  #     amount: 1
+  #     name: '&2Murder Axe'
+  #     lore1: '&aFor felling the undead!'
+  #     unbreaking: 8
+  #     enchantments:
+  #       '1':
+  #         enchantment: smite
+  #         level: 6
   - murder_axe:
-      name: "§2Murder Axe"
-      item: "IRON_AXE"
-      type: "WEAPON"
-      lore:
-        - "§aFor felling the undead!"
-      enchantments:
-        - SMITE:
-            level: 1
-  - flame_bow:
-      name: "§cFlame §6Bow"
-      item: "BOW"
-      type: "WEAPON"
-      lore:
-        - "§eShoots fire to the heavens!"
-      enchantments:
-        - FLAME:
-            level: 2
-        - INFINITY:
-            level: 1
-  - sword_of_fortune:
-      item: "IRON_SWORD"
-      name: "&6Sword of Fortune"
-      type: "WEAPON"
-      lore:
-        - "&eMay the luck be ever in your favor"
-      enchantments:
-        - LOOTING:
-            level: 4
-  - wacker:
-      name: "&cWacker"
-      item: "WOODEN_SWORD"
-      type: "WEAPON"
-      lore:
-        - "Wack 'em back!"
-      enchantments:
-        - KNOCKBACK:
-            level: 10
-  - diamond_drop:
-      item: "DIAMOND"
-      type: "ITEM"
-      amount: 30
-  - arthropod_bane:
-      name: "&8Arthropod Bane"
-      item: "DIAMOND_SWORD"
-      type: "WEAPON"
-      lore:
-        - "&7Slays spiders like a hot knife through butter"
-      enchantments:
-        BANE_OF_ARTHROPODS:
+    name: "§2Murder Axe"
+    item: "IRON_AXE"
+    type: "WEAPON"
+    lore:
+      - "§aFor felling the undead!"
+    enchantments:
+      - SMITE:
+          level: 6
+      - UNBREAKING:
           level: 8
+
+  #   '2':
+  #     item: BOW
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&cFlame &6Bow'
+  #     lore1: '&eShoots fire to the heavens!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: infinity
+  #         level: 1
+  #       '2':
+  #         enchantment: flame
+  #         level: 2
+
+  - flame_bow:
+    name: "§cFlame §6Bow"
+    item: "BOW"
+    type: "WEAPON"
+    lore:
+      - "§eShoots fire to the heavens!"
+    enchantments:
+      - INFINITY:
+          level: 1
+      - FLAME:
+        level: 2
+
+  #   '3':
+  #     item: IRON_SWORD
+  #     amount: 1
+  #     unbreaking: 90
+  #     name: '&6Sword of fortune'
+  #     lore1: '&eMay the luck be ever in your favor'
+  #     enchantments:
+  #       '1':
+  #         enchantment: looting
+  #         level: 4
+  - sword_of_fortune:
+    name: "§6Sword of Fortune"
+    item: "IRON_SWORD"
+    type: "WEAPON"
+    lore:
+      - "§eMay the luck be ever in your favor"
+    enchantments:
+      - LOOTING:
+          level: 4
+
+  #   '4':
+  #     item: WOOD_SWORD
+  #     amount: 1
+  #     unbreaking: 0
+  #     name: Wacker
+  #     lore1: "Wack 'em back!"
+  #     enchantments:
+  #       '1':
+  #         enchantment: knockback
+  #         level: 10
+  - wacker:
+    name: "Wacker"
+    item: "WOOD_SWORD"
+    type: "WEAPON"
+    lore:
+      - "Wack 'em back!"
+    enchantments:
+      - KNOCKBACK:
+          level: 10
+
+  #   '5':
+  #     item: DIAMOND
+  #     amount: 5
+  - diamond_drop:
+    item: "DIAMOND"
+    amount: 5
+
+  #   '6':
+  #     item: DIAMOND_SWORD
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&8Arthropod Bane'
+  #     lore1: '&7Slays spiders like a hot knife through butter'
+  #     enchantments:
+  #       '1':
+  #         enchantment: bane_of_arthropods
+  #         level: 8
+  - arthropod_bane:
+    name: "§8Arthropod Bane"
+    item: "DIAMOND_SWORD"
+    type: "WEAPON"
+    lore:
+      - "§7Slays spiders like a hot knife through butter"
+    enchantments:
+      - BANE_OF_ARTHROPODS:
+          level: 8
+
+  #   '7':
+  #     item: DIAMOND_SWORD
+  #     amount: 1
+  #     unbreaking: 2
+  #     name: '&fThe Excalibur'
+  #     lore1: '&7King Author''s sword.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: sharpness
+  #         level: 5
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 5
+  #       '3':
+  #         enchantment: knockback
+  #         level: 3
   - the_excalibur:
-      name: "&fThe Excalibur"
-      item: "DIAMOND_SWORD"
-      type: "WEAPON"
-      lore:
-        - "&7King Author''s sword."
-      enchantments:
-        - SHARPNESS:
-            level: 5
-        - UNBREAKING:
-            level: 5
-        - KNOCKBACK:
-            level: 3
+    name: "§fThe Excalibur"
+    item: "DIAMOND_SWORD"
+    type: "WEAPON"
+    lore:
+      - "§7King Author's sword."
+    enchantments:
+      - SHARPNESS:
+          level: 5
+      - UNBREAKING:
+          level: 5
+      - KNOCKBACK:
+          level: 3
+    user_effects:
+      - STRENGTH:
+          level: 2
+
+  #   '8':
+  #     item: DIAMOND_SHOVEL
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&7Backhoe'
+  #     lore1: '&8Digs too fast!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: efficiency
+  #         level: 5
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 1
+  - backhoe:
+    name: "§7Backhoe"
+    item: "DIAMOND_SHOVEL"
+    type: "WEAPON"
+    lore:
+      - "§8Digs too fast!"
+    enchantments:
+      - EFFICIENCY:
+          level: 5
+      - UNBREAKING:
+          level: 1
+    user_effects:
+      HASTE:
+        level: 2
+
+  #   '9':
+  #     item: DIAMOND_PICKAXE
+  #     amount: 1
+  #     unbreaking: 15
+  #     name: '&fSilky'
+  #     lore1: '&7Silkier than milk!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: silk_touch
+  #         level: 5
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 5
+  - silky:
+    name: "§fSilky"
+    item: "DIAMOND_PICKAXE"
+    type: "WEAPON"
+    lore:
+      - "§7Silkier than milk!"
+    enchantments:
+      - SILK_TOUCH:
+          level: 5
+      - UNBREAKING:
+          level: 5
+
+  #   '10':
+  #     item: DIAMOND_AXE
+  #     amount: 1
+  #     unbreaking: 250
+  #     name: '&cCanadian Axe'
+  #     lore1: '&fChops way to fast!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: smite
+  #         level: 3
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 6
+  #       '3':
+  #         enchantment: knockback
+  #         level: 1
+  - canadian_axe:
+    name: "§cCanadian Axe"
+    item: "DIAMOND_AXE"
+    type: "WEAPON"
+    lore:
+      - "§fChops way to fast!"
+    enchantments:
+      - SMITE:
+          level: 3
+      - UNBREAKING:
+          level: 6
+      - KNOCKBACK:
+          level: 1
+
+  #   '11':
+  #     item: GOLDEN_SWORD
+  #     amount: 1
+  #     unbreaking: 1
+  #     name: '&6Butter Knife'
+  #     lore1: '&eCan only cut butter...'
+  #     enchantments:
+  #       '1':
+  #         enchantment: sharpness
+  #         level: 2
+  #       '2':
+  #         enchantment: knockback
+  #         level: 6
+  - butter_knife:
+    name: "§6Butter Knife"
+    item: "GOLDEN_SWORD"
+    type: "WEAPON"
+    lore:
+      - "§eCan only cut butter..."
+    enchantments:
+      - SHARPNESS:
+          level: 2
+      - KNOCKBACK:
+          level: 6
+
+  #   '12':
+  #     item: GOLDEN_SHOVEL
+  #     amount: 1
+  #     unbreaking: 5
+  #     name: '&6GOLDEN Spoon'
+  #     lore1: '&eUse with caution.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: fortune
+  #         level: 5
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 3
+  - golden_spoon:
+    name: "§6GOLDEN Spoon"
+    item: "GOLDEN_SHOVEL"
+    type: "WEAPON"
+    lore:
+      - "§eUse with caution."
+    enchantments:
+      - FORTUNE:
+          level: 5
+      - UNBREAKING:
+          level: 3
+
+  #   '13':
+  #     item: GOLDEN_PICKAXE
+  #     amount: 1
+  #     name: '&7Glass Drill'
+  #     lore1: '&8Use in case of emergency!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: efficiency
+  #         level: 10
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 3
+  - glass_drill:
+    name: "§7Glass Drill"
+    item: "GOLDEN_PICKAXE"
+    type: "WEAPON"
+    lore:
+      - "§8Use in case of emergency!"
+    enchantments:
+      - EFFICIENCY:
+          level: 10
+      - UNBREAKING:
+          level: 3
+    user_effects:
+      - HASTE:
+        level: 1
+  #   '14':
+  #     item: GOLDEN_AXE
+  #     amount: 1
+  #     unbreaking: 8
+  #     name: '&cAmerican &fAxe'
+  #     lore1: '&1Worse than the Canadian axe...'
+  #     enchantments:
+  #       '1':
+  #         enchantment: efficiency
+  #         level: 5
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 5
+  - american_axe:
+    name: "§cAmerican Axe"
+    item: "GOLDEN_AXE"
+    type: "WEAPON"
+    lore:
+      - "§1Worse than the Canadian axe..."
+    enchantments:
+      - EFFICIENCY:
+          level: 5
+      - UNBREAKING:
+          level: 5
+    user_effects:
+      - MINING_FATIGUE:
+          level: 10
+  #   '15':
+  #     item: IRON_HOE
+  #     amount: 1
+  #     unbreaking: 5
+  #     name: '&fQuarts Hoe'
+  #     lore1: '&yBetter than iron!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 10
+  - quarts_hoe:
+    name: "§fQuarts Hoe"
+    item: "IRON_HOE"
+    type: "WEAPON"
+    lore:
+      - "§yBetter than iron!"
+    enchantments:
+      - UNBREAKING:
+          level: 10
+
+  #   '16':
+  #     item: DIAMOND_HOE
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: Magic Hoe
+  #     lore1: Forged by God.
+  #     lore2: "Well, by God's Gardener"
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 10
+  - magic_hoe:
+    name: "Magic Hoe"
+    item: "DIAMOND_HOE"
+    type: "WEAPON"
+    lore:
+      - "Forged by God."
+      - "Well, by God's Gardener"
+    enchantments:
+      - UNBREAKING:
+          level: 10
+
+  #   '17':
+  #     item: LEATHER_CHESTPLATE
+  #     amount: 1
+  #     unbreaking: 50
+  #     name: '&4Old Shirt'
+  #     lore1: '&4Still good!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: fire_protection
+  #         level: 9
+  #       '2':
+  #         enchantment: protection
+  #         level: 8
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 7
+  - old_shirt:
+    name: "§4Old Shirt"
+    item: "LEATHER_CHESTPLATE"
+    type: "ARMOR"
+    lore:
+      - "§4Still good!"
+    enchantments:
+      - FIRE_PROTECTION:
+          level: 9
+      - PROTECTION:
+          level: 8
+      - UNBREAKING:
+          level: 7
+
+  #   '18':
+  #     item: CHAINMAIL_HELMET
+  #     amount: 1
+  #     unbreaking: 30
+  #     name: '&9Water Helmet'
+  #     lore1: '&1Go in the sea!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: respiration
+  #         level: 10
+  #       '2':
+  #         enchantment: aqua_affinity
+  #         level: 6
+  - water_helmet:
+    name: "§9Water Helmet"
+    item: "CHAINMAIL_HELMET"
+    type: "ARMOR"
+    lore:
+      - "§1Go in the sea!"
+    enchantments:
+      - RESPIRATION:
+          level: 10
+      - AQUA_AFFINITY:
+          level: 6
+
+  #   '19':
+  #     item: CHAINMAIL_CHESTPLATE
+  #     amount: 1
+  #     unbreaking: 30
+  #     name: '&2Creeper Gear'
+  #     lore1: '&aPart 2'
+  #     enchantments:
+  #       '1':
+  #         enchantment: blast_protection
+  #         level: 5
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 3
+  - creeper_gear:
+    name: "§2Creeper Gear"
+    item: "CHAINMAIL_CHESTPLATE"
+    type: "ARMOR"
+    lore:
+      - "§aPart 2"
+    enchantments:
+      - BLAST_PROTECTION:
+          level: 5
+      - UNBREAKING:
+          level: 3
+
+  #   '20':
+  #     item: CHAINMAIL_LEGGINGS
+  #     amount: 1
+  #     unbreaking: 50
+  #     name: Thorny Pants
+  #     lore1: Very Sharp...
+  #     enchantments:
+  #       '1':
+  #         enchantment: fire_protection
+  #         level: 4
+  #       '2':
+  #         enchantment: thorns
+  #         level: 8
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 3
+  - thorny_pants:
+    name: "Thorny Pants"
+    item: "CHAINMAIL_LEGGINGS"
+    type: "ARMOR"
+    lore:
+      - "Very Sharp..."
+    enchantments:
+      - FIRE_PROTECTION:
+          level: 4
+      - THORNS:
+          level: 8
+      - UNBREAKING:
+          level: 3
+
+  #   '21':
+  #     item: CHAINMAIL_BOOTS
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&7Travellers Boots'
+  #     lore1: '&8Go on a journey!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: thorns
+  #         level: 5
+  #       '2':
+  #         enchantment: protection
+  #         level: 5
+  - travellers_boots:
+    name: "§7Travellers Boots"
+    item: "CHAINMAIL_BOOTS"
+    type: "ARMOR"
+    lore:
+      - "§8Go on a journey!"
+    enchantments:
+      - THORNS:
+          level: 5
+      - PROTECTION:
+          level: 5
+
+  #   '22':
+  #     item: IRON_HELMET
+  #     amount: 1
+  #     unbreaking: 90
+  #     name: '&7Rusty Iron Helm'
+  #     lore1: '&8Rusted but still good.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 5
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 5
+  - rusty_iron_helm:
+    name: "§7Rusty Iron Helm"
+    item: "IRON_HELMET"
+    type: "ARMOR"
+    lore:
+      - "§8Rusted but still good."
+    enchantments:
+      - PROTECTION:
+          level: 5
+      - UNBREAKING:
+          level: 5
+
+  #   '23':
+  #     item: IRON_CHESTPLATE
+  #     amount: 1
+  #     unbreaking: 50
+  #     name: '&cArchers Vest'
+  #     lore1: '&4Take an arrow to the knee!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: projectile_protection
+  #         level: 10
+  - archers_vest:
+    name: "§cArchers Vest"
+    item: "IRON_CHESTPLATE"
+    type: "ARMOR"
+    lore:
+      - "§4Take an arrow to the knee!"
+    enchantments:
+      - PROJECTILE_PROTECTION:
+          level: 10
+
+  #   '24':
+  #     item: IRON_LEGGINGS
+  #     amount: 1
+  #     unbreaking: 20
+  #     name: Firemen Pants
+  #     lore1: Take 'em to a fire!
+  #     enchantments:
+  #       '1':
+  #         enchantment: fire_protection
+  #         level: 7
+  #       '2':
+  #         enchantment: blast_protection
+  #         level: 3
+  - firemen_pants:
+    name: "Firemen Pants"
+    item: "IRON_LEGGINGS"
+    type: "ARMOR"
+    lore:
+      - "Take 'em to a fire!"
+    enchantments:
+      - FIRE_PROTECTION:
+          level: 7
+      - BLAST_PROTECTION:
+          level: 3
+
+  #   '25':
+  #     item: IRON_BOOTS
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: Fall Far Boots
+  #     lore1: Mark 1
+  #     enchantments:
+  #       '1':
+  #         enchantment: feather_falling
+  #         level: 8
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 2
+  - fall_far_boots:
+    name: "Fall Far Boots"
+    item: "IRON_BOOTS"
+    type: "ARMOR"
+    lore:
+      - "Mark 1"
+    enchantments:
+      - FEATHER_FALLING:
+          level: 8
+      - UNBREAKING:
+          level: 2
+
+  #   '26':
+  #     item: GOLDEN_HELMET
+  #     amount: 1
+  #     unbreaking: 12
+  #     name: '&9Fish Hat'
+  #     lore1: '&1Be the fish.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: aqua_affinity
+  #         level: 10
+  #       '2':
+  #         enchantment: protection
+  #         level: 4
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 3
+  - fish_hat:
+    name: "§9Fish Hat"
+    item: "GOLDEN_HELMET"
+    type: "ARMOR"
+    lore:
+      - "§1Be the fish."
+    enchantments:
+      - AQUA_AFFINITY:
+          level: 10
+      - PROTECTION:
+          level: 4
+      - UNBREAKING:
+          level: 3
+
+  #   '27':
+  #     item: GOLDEN_CHESTPLATE
+  #     amount: 1
+  #     unbreaking: 80
+  #     name: '&9Fish Body'
+  #     lore1: '&1Be the fish.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 10
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 8
+  - fish_body:
+    name: "§9Fish Body"
+    item: "GOLDEN_CHESTPLATE"
+    type: "ARMOR"
+    lore:
+      - "§1Be the fish."
+    enchantments:
+      - PROTECTION:
+          level: 10
+      - UNBREAKING:
+          level: 8
+
+  #   '28':
+  #     item: GOLDEN_LEGGINGS
+  #     amount: 1
+  #     unbreaking: 60
+  #     name: '&9Fish Legs'
+  #     lore1: '&1Be the fish.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: fire_protection
+  #         level: 6
+  #       '2':
+  #         enchantment: thorns
+  #         level: 6
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 2
+  - fish_legs:
+    name: "§9Fish Legs"
+    item: "GOLDEN_LEGGINGS"
+    type: "ARMOR"
+    lore:
+      - "§1Be the fish."
+    enchantments:
+      - FIRE_PROTECTION:
+          level: 6
+      - THORNS:
+          level: 6
+      - UNBREAKING:
+          level: 2
+
+  #   '29':
+  #     item: GOLDEN_BOOTS
+  #     amount: 1
+  #     unbreaking: 40
+  #     name: '&9Fish Feet'
+  #     lore1: '&1Be the fish.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: thorns
+  #         level: 6
+  #       '2':
+  #         enchantment: feather_falling
+  #         level: 8
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 3
+  - fish_feet:
+    name: "§9Fish Feet"
+    item: "GOLDEN_BOOTS"
+    type: "ARMOR"
+    lore:
+      - "§1Be the fish."
+    enchantments:
+      - THORNS:
+          level: 6
+      - FEATHER_FALLING:
+          level: 8
+      - UNBREAKING:
+          level: 3
+
+  #   '30':
+  #     item: DIAMOND_HELMET
+  #     amount: 1
+  #     unbreaking: 22
+  #     name: '&3Drowned Helm'
+  #     lore1: '&3From the Drowned Gods watery halls.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: blast_protection
+  #         level: 4
+  #       '2':
+  #         enchantment: respiration
+  #         level: 8
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 2
+  - drowned_helm:
+    name: "§3Drowned Helm"
+    item: "DIAMOND_HELMET"
+    type: "ARMOR"
+    lore:
+      - "§3From the Drowned Gods watery halls."
+    enchantments:
+      - BLAST_PROTECTION:
+          level: 4
+      - RESPIRATION:
+          level: 8
+      - UNBREAKING:
+          level: 2
+
+  #   '31':
+  #     item: DIAMOND_CHESTPLATE
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&3Drowned Plate'
+  #     lore1: '&3From the Drowned Gods watery halls.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: blast_protection
+  #         level: 5
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 4
+  - drowned_plate:
+    name: "§3Drowned Plate"
+    item: "DIAMOND_CHESTPLATE"
+    type: "ARMOR"
+    lore:
+      - "§3From the Drowned Gods watery halls."
+    enchantments:
+      - BLAST_PROTECTION:
+          level: 5
+      - UNBREAKING:
+          level: 4
+
+  #   '32':
+  #     item: DIAMOND_LEGGINGS
+  #     amount: 1
+  #     unbreaking: 3
+  #     name: '&3Drowned Leggings'
+  #     lore1: '&3From the Drowned Gods watery halls.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 3
+  #       '2':
+  #         enchantment: thorns
+  #         level: 5
+  - drowned_legs:
+    name: "§3Drowned Leggings"
+    item: "DIAMOND_LEGGINGS"
+    type: "ARMOR"
+    lore:
+      - "§3From the Drowned Gods watery halls."
+    enchantments:
+      - PROTECTION:
+          level: 3
+      - THORNS:
+          level: 5
+
+  #   '33':
+  #     item: DIAMOND_BOOTS
+  #     amount: 1
+  #     unbreaking: 9
+  #     name: '&3Drowned Boots'
+  #     lore1: '&3From the Drowned Gods watery halls.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: thorns
+  #         level: 5
+  #       '2':
+  #         enchantment: protection
+  #         level: 3
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 2
+  #       '4':
+  #         enchantment: depth_strider
+  #         level: 2
+  - drowned_boots:
+    name: "§3Drowned Boots"
+    item: "DIAMOND_BOOTS"
+    type: "ARMOR"
+    lore:
+      - "§3From the Drowned Gods watery halls."
+    enchantments:
+      - THORNS:
+          level: 5
+      - PROTECTION:
+          level: 3
+      - UNBREAKING:
+          level: 2
+      - DEPTH_STRIDER:
+          level: 2
+
+  #   '34':
+  #     item: GOLDEN_APPLE
+  #     amount: 2
+  #     unbreaking: 0
+  #     name: "&eThor's Apple"
+  #     lore1: '&eStolen from Thors own table.'
+  - thor_apple:
+    name: "§eThor's Apple"
+    item: "GOLDEN_APPLE"
+    type: "ITEM"
+    lore:
+      - "§eStolen from Thors own table."
+
+  #   '35':
+  #     item: GOLDEN_CARROT
+  #     amount: 3
+  #     unbreaking: 0
+  #     name: Easter Bunny's Carrot
+  #     lore1: He will kill to get it back!
+  - easter_bunny_carrot:
+    name: "Easter Bunny's Carrot"
+    item: "GOLDEN_CARROT"
+    type: "ITEM"
+    lore:
+      - "He will kill to get it back!"
+
+  #   '36':
+  #     item: DIAMOND_SWORD
+  #     amount: 1
+  #     unbreaking: 11
+  #     name: Spider Whacker
+  #     lore1: Whack spiders.
+  #     enchantments:
+  #       '1':
+  #         enchantment: knockback
+  #         level: 7
+  - spider_whacker:
+    name: "Spider Whacker"
+    item: "DIAMOND_SWORD"
+    type: "WEAPON"
+    lore:
+      - "Whack spiders."
+    enchantments:
+      - KNOCKBACK:
+        level: 7
+
+  #   '37':
+  #     item: DIAMOND_SHOVEL
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&aGardener''s SHOVEL'
+  #     lore1: '&aDig in the garden.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: silk_touch
+  #         level: 1
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 6
+  - gardeners_shovel:
+    name: "§aGardener's Shovel"
+    item: "DIAMOND_SHOVEL"
+    type: "WEAPON"
+    lore:
+      - "Dig in the garden."
+    enchantments:
+      - SILK_TOUCH:
+        level: 1
+      - UNBREAKING:
+        level: 6
+
+  #   '38':
+  #     item: DIAMOND_PICKAXE
+  #     amount: 1
+  #     unbreaking: 19
+  #     name: Dwarf's Pick
+  #     lore1: Diggy diggy hole.
+  #     enchantments:
+  #       '1':
+  #         enchantment: fortune
+  #         level: 4
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 5
+  - dwarfs_pick:
+    name: "Dwarf's Pick"
+    item: "DIAMOND_PICKAXE"
+    type: "WEAPON"
+    lore:
+      - "Diggy diggy hole."
+    enchantments:
+      - FORTUNE:
+        level: 4
+      - UNBREAKING:
+        level: 5
+
+  #   '39':
+  #     item: DIAMOND_AXE
+  #     amount: 1
+  #     unbreaking: 30
+  #     name: '&7Battle Axe'
+  #     lore1: '&8Saxon war axe.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: smite
+  #         level: 5
+  #       '2':
+  #         enchantment: sharpness
+  #         level: 4
+  - battle_axe:
+    name: "§7Battle Axe"
+    item: "DIAMOND_AXE"
+    type: "WEAPON"
+    lore:
+      - "Saxon war axe."
+    enchantments:
+      - SMITE:
+        level: 5
+      - SHARPNESS:
+        level: 4
+
+  #   '40':
+  #     item: GOLDEN_SWORD
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&4Demon Sword'
+  #     lore1: '&cFiery hot!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: sharpness
+  #         level: 10
+  #       '2':
+  #         enchantment: fire_aspect
+  #         level: 3
+  - demon_sword:
+    name: "§4Demon Sword"
+    item: "GOLDEN_SWORD"
+    type: "WEAPON"
+    lore:
+      - "Fiery hot!"
+    enchantments:
+      - SHARPNESS:
+        level: 10
+      - FIRE_ASPECT:
+        level: 3
+    hit_effects:
+      - WITHER:
+        level: 1
+        duration: 2
+
+  #   '41':
+  #     item: GOLDEN_SHOVEL
+  #     amount: 1
+  #     unbreaking: 1
+  #     name: '&6Disposable Quick SHOVEL'
+  #     lore1: '&eQuick but disposable.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: efficiency
+  #         level: 10
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 3
+  - disposable_quick_shovel:
+    name: "§6Disposable Quick Shovel"
+    item: "GOLDEN_SHOVEL"
+    type: "WEAPON"
+    lore:
+      - "Quick but disposable."
+    enchantments:
+      - EFFICIENCY:
+        level: 10
+      - UNBREAKING:
+        level: 3
+
+  #   '42':
+  #     item: GOLDEN_PICKAXE
+  #     amount: 1
+  #     unbreaking: 50
+  #     name: '&6Butter Pick'
+  #     lore1: '&ePractically made from butter.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: fortune
+  #         level: 5
+  #       '2':
+  #         enchantment: efficiency
+  #         level: 5
+  - butter_pick:
+    name: "§6Butter Pick"
+    item: "GOLDEN_PICKAXE"
+    type: "WEAPON"
+    lore:
+      - "Practically made from butter."
+    enchantments:
+      - FORTUNE:
+        level: 5
+      - EFFICIENCY:
+        level: 5
+
+  #   '43':
+  #     item: GOLDEN_AXE
+  #     amount: 1
+  #     unbreaking: 40
+  #     name: Slim Axe
+  #     lore1: Small but deadly
+  #     enchantments:
+  #       '1':
+  #         enchantment: sharpness
+  #         level: 10
+  #       '2':
+  #         enchantment: knockback
+  #         level: 5
+  - slim_axe:
+    name: "Slim Axe"
+    item: "GOLDEN_AXE"
+    type: "WEAPON"
+    lore:
+      - "Small but deadly"
+    enchantments:
+      - SHARPNESS:
+        level: 10
+      - KNOCKBACK:
+        level: 5
+
+  #   '44':
+  #     item: IRON_HOE
+  #     amount: 1
+  #     unbreaking: 50
+  #     name: '&7Old Hoe'
+  #     lore1: '&8Not much use.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 6
+  - old_hoe:
+    name: "§7Old Hoe"
+    item: "IRON_HOE"
+    type: "WEAPON"
+    lore:
+      - "§8Not much use."
+    enchantments:
+      - UNBREAKING:
+        level: 6
+
+  #   '45':
+  #     item: DIAMOND_HOE
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&aGardener''s Hoe'
+  #     lore1: '&aBe a Gardener'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 5
+  - gardener_hoe:
+    name: "§aGardener's Hoe"
+    item: "DIAMOND_HOE"
+    type: "WEAPON"
+    lore:
+      - "§aBe a Gardener"
+    enchantments:
+      - UNBREAKING:
+        level: 5
+
+  #   '46':
+  #     item: LEATHER_CHESTPLATE
+  #     amount: 1
+  #     unbreaking: 50
+  #     name: '&4Boiled Leather Shirt'
+  #     lore1: '&4Better than nothing.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 5
+  #       '2':
+  #         enchantment: thorns
+  #         level: 10
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 5
+  - boiled_leather_shirt:
+    name: "§4Boiled Leather Shirt"
+    item: "LEATHER_CHESTPLATE"
+    type: "ARMOR"
+    lore:
+      - "§4Better than nothing."
+    enchantments:
+      - PROTECTION:
+        level: 5
+      - THORNS:
+        level: 10
+      - UNBREAKING:
+        level: 5
+
+  #   '47':
+  #     item: CHAINMAIL_HELMET
+  #     amount: 1
+  #     unbreaking: 30
+  #     name: '&7Sharp Hat'
+  #     lore1: '&8So sharp...'
+  #     enchantments:
+  #       '1':
+  #         enchantment: thorns
+  #         level: 10
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 6
+  - sharp_hat:
+    name: "§7Sharp Hat"
+    item: "CHAINMAIL_HELMET"
+    type: "ARMOR"
+    lore:
+      - "§8So sharp..."
+    enchantments:
+      - THORNS:
+        level: 10
+      - UNBREAKING:
+        level: 6
+
+  #   '48':
+  #     item: CHAINMAIL_CHESTPLATE
+  #     amount: 1
+  #     unbreaking: 30
+  #     name: '&7Sharp Chest'
+  #     lore1: '&8So sharp...'
+  #     enchantments:
+  #       '1':
+  #         enchantment: fire_protection
+  #         level: 10
+  #       '2':
+  #         enchantment: thorns
+  #         level: 5
+  - sharp_chest:
+    name: "§7Sharp Chest"
+    item: "CHAINMAIL_CHESTPLATE"
+    type: "ARMOR"
+    lore:
+      - "§8So sharp..."
+    enchantments:
+      - FIRE_PROTECTION:
+        level: 10
+      - THORNS:
+        level: 5
+
+  #   '49':
+  #     item: CHAINMAIL_LEGGINGS
+  #     amount: 1
+  #     unbreaking: 50
+  #     name: '&4Traveller''s Pants'
+  #     lore1: '&4Worn but still good.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 10
+  - traveller_pants:
+    name: "§4Traveller's Pants"
+    item: "CHAINMAIL_LEGGINGS"
+    type: "ARMOR"
+    lore:
+      - "§4Worn but still good."
+    enchantments:
+      - PROTECTION:
+        level: 10
+
+  #   '50':
+  #     item: CHAINMAIL_BOOTS
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: Strong Boots
+  #     lore1: So strong!
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 5
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 5
+  - strong_boots:
+    name: "Strong Boots"
+    item: "CHAINMAIL_BOOTS"
+    type: "ARMOR"
+    lore:
+      - "So strong!"
+    enchantments:
+      - PROTECTION:
+        level: 5
+      - UNBREAKING:
+        level: 5
+
+  #   '51':
+  #     item: IRON_HELMET
+  #     amount: 1
+  #     unbreaking: 30
+  #     name: Cast Iron Helm
+  #     lore1: Its Iron but cast.
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 1
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 10
+  - cast_iron_helm:
+    name: "Cast Iron Helm"
+    item: "IRON_HELMET"
+    type: "ARMOR"
+    lore:
+      - "Its Iron but cast."
+    enchantments:
+      - PROTECTION:
+        level: 1
+      - UNBREAKING:
+        level: 10
+
+  #   '52':
+  #     item: IRON_CHESTPLATE
+  #     amount: 1
+  #     unbreaking: 15
+  #     name: '&7Spiked Chestplate'
+  #     lore1: '&8Nothing can survive this.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: thorns
+  #         level: 10
+  - spiked_chestplate:
+    name: "§7Spiked Chestplate"
+    item: "IRON_CHESTPLATE"
+    type: "ARMOR"
+    lore:
+      - "§8Nothing can survive this."
+    enchantments:
+      - THORNS:
+        level: 10
+
+  #   '53':
+  #     item: IRON_LEGGINGS
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&cArchers Pants'
+  #     lore1: '&4Stops ''em arrows.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: projectile_protection
+  #         level: 3
+  #       '2':
+  #         enchantment: thorns
+  #         level: 5
+  - archers_pants:
+    name: "§cArchers Pants"
+    item: "IRON_LEGGINGS"
+    type: "ARMOR"
+    lore:
+      - "§4Stops ''em arrows."
+    enchantments:
+      - PROJECTILE_PROTECTION:
+        level: 3
+      - THORNS:
+        level: 5
+
+  #   '54':
+  #     item: IRON_BOOTS
+  #     amount: 1
+  #     unbreaking: 5
+  #     name: Stiletto Heels
+  #     lore1: Don't walk one me!
+  #     enchantments:
+  #       '1':
+  #         enchantment: thorns
+  #         level: 6
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 4
+  - stiletto_heels:
+    name: "Stiletto Heels"
+    item: "IRON_BOOTS"
+    type: "ARMOR"
+    lore:
+      - "Don't walk one me!"
+    enchantments:
+      - THORNS:
+        level: 6
+      - UNBREAKING:
+        level: 4
+
+  #   '55':
+  #     item: GOLDEN_HELMET
+  #     amount: 1
+  #     unbreaking: 2
+  #     name: '&0Death Mask'
+  #     lore1: '&8Breath death itself!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: thorns
+  #         level: 5
+  #       '2':
+  #         enchantment: respiration
+  #         level: 1
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 4
+  - death_mask:
+    name: "§0Death Mask"
+    item: "GOLDEN_HELMET"
+    type: "ARMOR"
+    lore:
+      - "§8Breath death itself!"
+    enchantments:
+      - THORNS:
+        level: 5
+      - RESPIRATION:
+        level: 1
+      - UNBREAKING:
+        level: 4
+
+  #   '56':
+  #     item: GOLDEN_CHESTPLATE
+  #     amount: 1
+  #     unbreaking: 8
+  #     name: '&6Kings Breastplate'
+  #     lore1: '&eOnly for kings,'
+  #     lore2: '&eThose of noble birth,'
+  #     lore3: '&eNot you...'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 3
+  #       '2':
+  #         enchantment: thorns
+  #         level: 2
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 4
+  #       '4':
+  #         enchantment: fire_protection
+  #         level: 5
+  - kings_breastplate:
+    name: "§6Kings Breastplate"
+    item: "GOLDEN_CHESTPLATE"
+    type: "ARMOR"
+    lore:
+      - "§eOnly for kings,"
+      - "§eThose of noble birth,"
+      - "§eNot you..."
+    enchantments:
+      - PROTECTION:
+        level: 3
+      - THORNS:
+        level: 2
+      - UNBREAKING:
+        level: 4
+      - FIRE_PROTECTION:
+        level: 5
+
+  #   '57':
+  #     item: DIAMOND_LEGGINGS
+  #     amount: 1
+  #     unbreaking: 16
+  #     name: '&cArchers Pants MK 2'
+  #     lore1: '&4Even better than MK 1!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: projectile_protection
+  #         level: 5
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 4
+  - archers_pants_mk2:
+    name: "§cArchers Pants MK 2"
+    item: "DIAMOND_LEGGINGS"
+    type: "ARMOR"
+    lore:
+      - "§4Even better than MK 1!"
+    enchantments:
+      - PROJECTILE_PROTECTION:
+        level: 5
+      - UNBREAKING:
+        level: 4
+
+  #   '58':
+  #     item: DIAMOND_BOOTS
+  #     amount: 1
+  #     unbreaking: 40
+  #     name: '&27 League Boots'
+  #     lore1: '&2Just say the magic word.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: feather_falling
+  #         level: 3
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 10
+  - league_boots:
+    name: "§27 League Boots"
+    item: "DIAMOND_BOOTS"
+    type: "ARMOR"
+    lore:
+      - "§2Just say the magic word."
+    enchantments:
+      - FEATHER_FALLING:
+        level: 3
+      - UNBREAKING:
+        level: 10
+    user_effects:
+      - SPEED:
+        level: 3
+
+  #   '59':
+  #     item: DIAMOND_HELMET
+  #     amount: 1
+  #     unbreaking: 22
+  #     name: '&bMermen Helm'
+  #     lore1: '&bDon''t drown!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 4
+  #       '2':
+  #         enchantment: respiration
+  #         level: 5
+  #       '3':
+  #         enchantment: thorns
+  #         level: 5
+  - mermen_helm:
+    name: "§bMermen Helm"
+    item: "DIAMOND_HELMET"
+    type: "ARMOR"
+    lore:
+      - "§bDon't drown!"
+    enchantments:
+      - PROTECTION:
+        level: 4
+      - RESPIRATION:
+        level: 5
+      - THORNS:
+        level: 5
+
+  #   '60':
+  #     item: DIAMOND_CHESTPLATE
+  #     amount: 1
+  #     unbreaking: 16
+  #     name: '&cArchers Vest MK2'
+  #     lore1: '&4Also has spikes!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: projectile_protection
+  #         level: 3
+  #       '2':
+  #         enchantment: thorns
+  #         level: 7
+  - archers_vest_mk2:
+    name: "§cArchers Vest MK2"
+    item: "DIAMOND_CHESTPLATE"
+    type: "ARMOR"
+    lore:
+      - "§4Also has spikes!"
+    enchantments:
+      - PROJECTILE_PROTECTION:
+        level: 3
+      - THORNS:
+        level: 7
+
+  #   '61':
+  #     item: BOW
+  #     amount: 1
+  #     unbreaking: 30
+  #     name: '&2Robinhood''s Bow'
+  #     lore1: '&4The Legend Lives!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 5
+  #       '2':
+  #         enchantment: power
+  #         level: 3
+  #       '3':
+  #         enchantment: flame
+  #         level: 1
+  #       '4':
+  #         enchantment: infinity
+  #         level: 1
+  #       '5':
+  #         enchantment: punch
+  #         level: 2
+  - robinhoods_bow:
+    name: "§2Robinhood''s Bow"
+    item: "BOW"
+    type: "WEAPON"
+    lore:
+      - "§4The Legend Lives!"
+    enchantments:
+      - UNBREAKING:
+        level: 5
+      - POWER:
+        level: 3
+      - FLAME:
+        level: 1
+      - INFINITY:
+        level: 1
+      - PUNCH:
+        level: 2
+    user_effects:
+      - STRENGTH:
+        level: 2
+
+  #   '62':
+  #     item: BOW
+  #     amount: 1
+  #     unbreaking: 20
+  #     name: '&eBrave Flame Bow'
+  #     lore1: '&cBurnt may a village.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 3
+  #       '2':
+  #         enchantment: power
+  #         level: 5
+  #       '3':
+  #         enchantment: flame
+  #         level: 3
+  - brave_flame_bow:
+    name: "§eBrave Flame Bow"
+    item: "BOW"
+    type: "WEAPON"
+    lore:
+      - "§cBurnt may a village."
+    enchantments:
+      - UNBREAKING:
+        level: 3
+      - POWER:
+        level: 5
+      - FLAME:
+        level: 3
+
+  #   '63':
+  #     item: BOW
+  #     amount: 1
+  #     unbreaking: 100
+  #     name: '&6Squaw Flame Bow'
+  #     lore1: '&4Cooked many a pig!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: flame
+  #         level: 1
+  #       '2':
+  #         enchantment: infinity
+  #         level: 1
+  - squaw_flame_bow:
+    name: "§6Squaw Flame Bow"
+    item: "BOW"
+    type: "WEAPON"
+    lore:
+      - "§4Cooked many a pig!"
+    enchantments:
+      - FLAME:
+        level: 1
+      - INFINITY:
+        level: 1
+
+  #   '64':
+  #     item: BOW
+  #     amount: 1
+  #     unbreaking: 0
+  #     name: '&cArchers Bow'
+  #     lore1: '&4Time to shoot!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 6
+  #       '2':
+  #         enchantment: power
+  #         level: 5
+  #       '3':
+  #         enchantment: infinity
+  #         level: 1
+  - archers_bow:
+    name: "§cArchers Bow"
+    item: "BOW"
+    type: "WEAPON"
+    lore:
+      - "§4Time to shoot!"
+    enchantments:
+      - UNBREAKING:
+        level: 6
+      - POWER:
+        level: 5
+      - INFINITY:
+        level: 1
+
+  #   '65':
+  #     item: GOLDEN_APPLE
+  #     amount: 1
+  #     unbreaking: 1
+  #     name: '&6God Apple'
+  #     lore1: '&6Not eaten my mortals!'
+  #     lore2: '&6And never can be!'
+  #! FOOD TESTING
+  - god_apple:
+    name: "§6God Apple"
+    item: "GOLDEN_APPLE"
+    type: "FOOD"
+    lore:
+      - "§6Not eaten my mortals!"
+      - "§6And never can be!"
+
+  #   '66':
+  #     item: ZOMBIE_HEAD
+  #     amount: 1
+  #     name: '&2Zombie Gear'
+  #     lore1: '&2Part 1'
+  #     enchantments:
+  #       '1':
+  #         enchantment: thorns
+  #         level: 10
+  - zombie_gear:
+    name: "§2Zombie Gear"
+    item: "ZOMBIE_HEAD"
+    type: "ARMOR"
+    lore:
+      - "§2Be the Zombie you want to be!"
+    enchantments:
+      - THORNS:
+        level: 10
+
+  #   '67':
+  #     item: NETHER_STAR
+  #     amount: 1
+  #     name: '&4Nether Star'
+  #     lore1: '&0From the depths of the Nether!'
+  - nether_star:
+    name: "§4Nether Star"
+    item: "NETHER_STAR"
+    type: "ITEM"
+    lore:
+      - "§0From the depths of the Nether!"
+
+  #   '68':
+  #     item: POTION
+  #     amount: 8
+  #     potion: POISON
+  #     name: '&aPoison Potion'
+  #     lore1: '&2Very deadly.'
+  - poison_potion:
+    name: "§aPoison Potion"
+    item: "SPLASH_POTION"
+    type: "POTION"
+    lore:
+      - "§2Very deadly."
+    potion_effects:
+      - POISON:
+        level: 2
+        duration: 30
+
+  #   '69':
+  #     item: POTION
+  #     amount: 6
+  #     potion: INVISIBILITY
+  #     name: '&fInvisibility Potion'
+  #     lore1: '&7From nowhere?'
+  - invisibility_potion:
+    name: "§fInvisibility Potion"
+    item: "POTION"
+    type: "POTION"
+    lore:
+      - "§7From nowhere?"
+    potion_effects:
+      - INVISIBILITY:
+        level: 1
+        duration: 300
+
+  #   '70':
+  #     item: POTION
+  #     amount: 5
+  #     potion: HEAL
+  #     name: '&dLife Potion'
+  #     lore1: '&5Not many left on earth.'
+  - life_potion:
+    name: "§dLife Potion"
+    item: "SPLASH_POTION"
+    type: "POTION"
+    lore:
+      - "§5Not many left on earth."
+    potion_effects:
+      - INSTANT_HEALTH:
+        level: 5
+        duration: 1
+
+  #   '71':
+  #     item: IRON_HELMET
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&3Eliminator''s Helmet'
+  #     lore1: '&eOnly for the best!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 7
+  #       '2':
+  #         enchantment: respiration
+  #         level: 5
+  #       '3':
+  #         enchantment: thorns
+  #         level: 5
+  #       '4':
+  #         enchantment: unbreaking
+  #         level: 5
+  - eliminators_helmet:
+    name: "§3Eliminator's Helmet"
+    item: "IRON_HELMET"
+    type: "ARMOR"
+    lore:
+      - "§eOnly for the best!"
+    enchantments:
+      - PROTECTION:
+        level: 7
+      - RESPIRATION:
+        level: 5
+      - THORNS:
+        level: 5
+      - UNBREAKING:
+        level: 5
+
+  #   '72':
+  #     item: DIAMOND_CHESTPLATE
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&3Eliminator''s Chestplate'
+  #     lore1: '&eYou have to be awesome!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 7
+  #       '2':
+  #         enchantment: thorns
+  #         level: 5
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 5
+  - eliminators_chestplate:
+    name: "§3Eliminator's Chestplate"
+    item: "DIAMOND_CHESTPLATE"
+    type: "ARMOR"
+    lore:
+      - "§eYou have to be awesome!"
+    enchantments:
+      - PROTECTION:
+        level: 7
+      - THORNS:
+        level: 5
+      - UNBREAKING:
+        level: 5
+
+  #   '73':
+  #     item: IRON_LEGGINGS
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&3Eliminator''s Pants'
+  #     lore1: '&eThe most epic!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 7
+  #       '2':
+  #         enchantment: thorns
+  #         level: 5
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 5
+  - eliminators_leggings:
+    name: "§3Eliminator's Pants"
+    item: "IRON_LEGGINGS"
+    type: "ARMOR"
+    lore:
+      - "§eThe most epic!"
+    enchantments:
+      - PROTECTION:
+        level: 7
+      - THORNS:
+        level: 5
+      - UNBREAKING:
+        level: 5
+
+  #   '74':
+  #     item: IRON_BOOTS
+  #     amount: 1
+  #     unbreaking: 10
+  #     name: '&3Eliminator''s Boots'
+  #     lore1: '&eThat much more cool!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 7
+  #       '2':
+  #         enchantment: thorns
+  #         level: 5
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 5
+  #       '4':
+  #         enchantment: feather_falling
+  #         level: 10
+  - eliminators_boots:
+    name: "§3Eliminator's Boots"
+    item: "IRON_BOOTS"
+    type: "ARMOR"
+    lore:
+      - "§eThat much more cool!"
+    enchantments:
+      - PROTECTION:
+        level: 7
+      - THORNS:
+        level: 5
+      - UNBREAKING:
+        level: 5
+      - FEATHER_FALLING:
+        level: 10
+
+  #   '75':
+  #     item: GLISTERING_MELON_SLICE
+  #     amount: 1
+  #     name: '&6Hunger Charm'
+  #     lore1: '&7Hunger no more'
+  - hunger_charm:
+    name: "§6Hunger Charm"
+    item: "GLISTERING_MELON_SLICE"
+    type: "CHARM"
+    lore:
+      - "§7Hunger no more"
+    user_effects:
+      - SATURATION:
+        level: 1
+
+  #   '76':
+  #     item: IRON_SWORD
+  #     amount: 1
+  #     name: '&aPoisoned Blade'
+  #     lore1: '&2Poison all ye strike!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 2
+  #       '2':
+  #         enchantment: sharpness
+  #         level: 2
+  - poisoned_blade:
+    name: "§aPoisoned Blade"
+    item: "IRON_SWORD"
+    type: "WEAPON"
+    lore:
+      - "§2Poison all ye strike!"
+    enchantments:
+      - UNBREAKING:
+        level: 2
+      - SHARPNESS:
+        level: 2
+    hit_effects:
+      - POISON:
+        level: 1
+        duration: 2
+
+  #   '77':
+  #     item: STICK
+  #     amount: 1
+  #     name: '&4Vampire Stake'
+  #     lore1: '&cHeals you when used'
+  #     enchantments:
+  #       '1':
+  #         enchantment: sharpness
+  #         level: 5
+  - vampire_stake:
+    name: "§4Vampire Stake"
+    item: "STICK"
+    type: "WEAPON"
+    lore:
+      - "§cHeals you when used"
+    enchantments:
+      - SHARPNESS:
+        level: 2-5
+
+  #   '78':
+  #     item: RABBIT_FOOT
+  #     amount: 1
+  #     name: '&7Bunny Charm'
+  #     lore1: '&8Jump Higher'
+  - bunny_charm:
+    name: "§7Bunny Charm"
+    item: "RABBIT_FOOT"
+    type: "CHARM"
+    lore:
+      - "§8Jump Higher"
+    user_effects:
+      - JUMP_BOOST:
+        level: 3
+
+  #   '79':
+  #     item: WITHER_SKELETON_SKULL
+  #     amount: 1
+  #     unbreaking: 1
+  #     name: '&7Wither Charm'
+  #     lore1: '&8Wither all ye fight!'
+  - wither_charm:
+    name: "§7Wither Charm"
+    item: "WITHER_SKELETON_SKULL"
+    type: "CHARM"
+    lore:
+      - "§8Wither all ye fight!"
+    hit_effects:
+      - WITHER:
+        level: 1
+        duration: 3
+
+  #   '80':
+  #     item: FIREWORK_ROCKET
+  #     amount: 1
+  #     name: '&7Cloak Charm'
+  #     lore1: '&8They will see you not'
+  - cloak_charm:
+    name: "§7Cloak Charm"
+    item: "FIREWORK_ROCKET"
+    type: "CHARM"
+    lore:
+      - "§8They will see you not"
+    user_effects:
+      - INVISIBILITY:
+        level: 1
+
+  #   '81':
+  #     item: BONE
+  #     amount: 1
+  #     name: '&cWeakness Charm'
+  #     lore1: '&4Weaken your foes'
+  - weakness_charm:
+    name: "§cWeakness Charm"
+    item: "BONE"
+    type: "CHARM"
+    lore:
+      - "§4Weaken your foes"
+    hit_effects:
+      - WEAKNESS:
+        level: 1
+        duration: 3
+
+  #   '82':
+  #     item: PRISMARINE_CRYSTALS
+  #     amount: 1
+  #     name: '&bAqua Charm'
+  #     lore1: '&3Become the fish...'
+  - aqua_charm:
+    name: "§bAqua Charm"
+    item: "PRISMARINE_CRYSTALS"
+    type: "CHARM"
+    lore:
+      - "§3Become the fish..."
+    user_effects:
+      - DOLPHINS_GRACE:
+        level: 1
+      - WATER_BREATHING:
+        level: 1
+
+  #? poggers
+  - ocean_core:
+    name: "§bOcean's Core"
+    item: "CONDUIT"
+    type: "CHARM"
+    lore:
+      - "§3Become the sea..."
+    user_effects:
+      - CONDUIT_POWER:
+        level: 1
+
+  #   '83':
+  #     item: PRISMARINE_SHARD
+  #     amount: 1
+  #     name: '&bGuardian Tooth'
+  #     lore1: '&3It can only make'
+  #     lore2: '&3you stronger!'
+  - guardian_tooth:
+    name: "§bGuardian Tooth"
+    item: "PRISMARINE_SHARD"
+    type: "CHARM"
+    lore:
+      - "§3It can only make"
+      - "§3you stronger!"
+    user_effects:
+      - HEALTH_BOOST:
+        level: 1
+
+  #   '84':
+  #     item: SPONGE
+  #     amount: 1
+  #     unbreaking: 1
+  #     name: '&eSoggy Sponge'
+  - soggy_sponge:
+    name: "§eSoggy Sponge"
+    item: "WET_SPONGE"
+    type: "ITEM"
+
+  #   '85':
+  #     item: ELYTRA
+  #     amount: 1
+  #     name: '&4Beetle Wings'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 1-3
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 1-5
+  - beetle_wings:
+    name: "§4Beetle Wings"
+    item: "ELYTRA"
+    type: "ARMOR"
+    enchantments:
+      - PROTECTION:
+        level: 1-3
+      - UNBREAKING:
+        level: 1-5
+
+  #   '86':
+  #     item: DIAMOND_SWORD
+  #     amount: 1
+  #     name:
+  #     - '&c&lNether Sword'
+  #     - '&c&lWither Sword'
+  #     - '&c&lGhast Sword'
+  #     - '&c&lMagma Sword'
+  #     enchantments:
+  #       '1':
+  #         enchantment: sharpness
+  #         level: 1-5
+  #         chance: 15
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 1-5
+  #         chance: 25
+  #       '3':
+  #         enchantment: knockback
+  #         level: 1-8
+  #         chance: 25
+  #       '4':
+  #         enchantment: bane_of_arthropods
+  #         level: 1-8
+  #         chance: 15
+  #       '5':
+  #         enchantment: smite
+  #         level: 1-8
+  #         chance: 15
+  #       '6':
+  #         enchantment: fire_aspect
+  #         level: 1-5
+  #         chance: 15
+  #       '7':
+  #         enchantment: looting
+  #         level: 1-5
+  #         chance: 15
+  #       '8':
+  #         enchantment: mending
+  #         level: 1-5
+  #         chance: 15
+
+  #   '87':
+  #     item: DRAGON_BREATH
+  #     amount: 1
+  #     name: '&e&lAngel Soul'
+  #     lore1: '&6Bottled for your convenience'
+  - dragon_breath:
+    name: "§e§lAngel Soul"
+    item: "DRAGON_BREATH"
+    type: "CHARM"
+    lore:
+      - "§6Bottled for your convenience"
+    user_effects:
+      - LEVITATION:
+        level: 1
+  #   '88':
+  #     item: BEETROOT_SEEDS
+  #     amount: 1
+  #     name: '&6GOLDEN Coins'
+  #     lore1: '&7They bring you luck'
+  - golden_coins:
+    name: "§6GOLDEN Coins"
+    item: "BEETROOT_SEEDS"
+    type: "ITEM"
+    lore:
+      - "§7They bring you luck"
+    user_effects:
+      - LUCK:
+        level: 1
+  #   '89':
+  #     item: IRON_SWORD
+  #     amount: 1
+  #     name: '&f&lSky Sword'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 1-5
+  #         chance: 33
+  #       '2':
+  #         enchantment: knockback
+  #         level: 3-10
+  #       '3':
+  #         enchantment: mending
+  #         level: 1-5
+  #         chance: 25
+  - sky_sword:
+    name: "§f§lSky Sword"
+    item: "IRON_SWORD"
+    type: "WEAPON"
+    enchantments:
+      - UNBREAKING:
+        level: 1-5
+        chance: 33
+      - KNOCKBACK:
+        level: 3-10
+      - MENDING:
+        level: 1-5
+        chance: 25
+    hit_effects:
+      - LEVITATION:
+        level: 1
+        duration: 3
+
+  #   '90':
+  #     item: SHIELD
+  #     amount: 1
+  #     unbreaking: 0
+  #     name: '&7&lShield of Power'
+  #     colour: YELLOW
+  #     patterns:
+  #     - ==: Pattern
+  #       color: LIGHT_BLUE
+  #       pattern: dls
+  #     - ==: Pattern
+  #       color: BLUE
+  #       pattern: sku
+
+  #   '91':
+  #     item: DIAMOND_SWORD
+  #     amount: 1
+  #     unbreaking: 90
+  #     name: '&c&lDemon Blade'
+  #     lore1: '&4Forged in the depths of the nether!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: fire_aspect
+  #         level: 10
+  #       '2':
+  #         enchantment: sharpness
+  #         level: 1-3
+  - demon_blade:
+    name: "§c§lDemon Blade"
+    item: "DIAMOND_SWORD"
+    type: "WEAPON"
+    unbreaking: 90
+    lore:
+      - "§4Forged in the depths of the nether!"
+    enchantments:
+      - FIRE_ASPECT:
+        level: 10
+      - SHARPNESS:
+        level: 1-3
+
+  #   '92':
+  #     item: SUGAR
+  #     amount: 1
+  #     name: '&fSugar of Ianite'
+  #     lore1: '&8Gives you the speed of Ianite.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 1
+  - sugar_of_ianite:
+    name: "§fSugar of Ianite"
+    item: "SUGAR"
+    type: "ITEM"
+    lore:
+      - "§8Gives you the speed of Ianite."
+    enchantments:
+      - UNBREAKING:
+        level: 1
+    user_effects:
+      - SPEED:
+        level: 4
+
+  #   '93':
+  #     item: TOTEM_OF_UNDYING
+  #     amount: 1
+  #     name: '&4Totem of Death'
+  #     enchantments:
+  #       '1':
+  #         enchantment: thorns
+  #         level: 1
+  - totem_of_death:
+    name: "§4Totem of Death"
+    item: "TOTEM_OF_UNDYING"
+    type: "ITEM"
+    enchantments:
+      - THORNS:
+        level: 1
+    user_effects:
+      - MINING_FATIGUE:
+        level: 5
+  #   '94':
+  #     item: TOTEM_OF_UNDYING
+  #     amount: 1
+  #     name: '&eTotem of Life'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 1
+  - totem_of_life:
+    name: "§eTotem of Life"
+    item: "TOTEM_OF_UNDYING"
+    type: "ITEM"
+    enchantments:
+      - UNBREAKING:
+        level: 1
+    user_effects:
+      - HASTE:
+        level: 3
+  #   '95':
+  #     item: RED_GLAZED_TERRACOTTA
+  #     amount: 1
+  #     name: '&cFire Crystal'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 1
+  - fire_crystal:
+    name: "§cFire Crystal"
+    item: "RED_GLAZED_TERRACOTTA"
+    type: "ITEM"
+    enchantments:
+      - UNBREAKING:
+        level: 1
+    user_effects:
+      - FIRE_RESISTANCE:
+        level: 1
+  #   '96':
+  #     item: TRIDENT
+  #     amount: 1
+  #     unbreaking: 90
+  #     name: '&b&lTrident of Poseidon'
+  #     lore1: '&3Wielded by Poseidon during the great war.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: loyalty
+  #         level: 3
+  #       '2':
+  #         enchantment: sharpness
+  #         level: 3-5
+  #       '3':
+  #         enchantment: impaling
+  #         level: 4
+  #       '4':
+  #         enchantment: channeling
+  #         level: 1
+  - trident_of_poseidon:
+    name: "§bTrident of Poseidon"
+    item: "TRIDENT"
+    type: "WEAPON"
+    unbreaking: 90
+    lore:
+      - "§3Wielded by Poseidon during the great war."
+    enchantments:
+      - LOYALTY:
+        level: 3
+      - SHARPNESS:
+        level: 3-5
+      - IMPALING:
+        level: 4
+      - CHANNELING:
+        level: 1
+
+  #   '97':
+  #     item: FEATHER
+  #     amount: 1
+  #     name: '&eAngel Feather'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 1
+  - angel_feather:
+    name: "§eAngel Feather"
+    item: "FEATHER"
+    type: "ITEM"
+    enchantments:
+      - UNBREAKING:
+        level: 1
+    user_effects:
+      - SLOW_FALLING:
+        level: 1
+  #   '98':
+  #     item: SEA_PICKLE
+  #     amount: 1
+  #     name: '&2Pickel of Power'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 1
+  - pickle_of_power:
+    name: "§2Pickel of Power"
+    item: "SEA_PICKLE"
+    type: "ITEM"
+    enchantments:
+      - UNBREAKING:
+        level: 1
+    user_effects:
+      WEAKNESS:
+        level: 5
+  #   '99':
+  #     item: HONEYCOMB
+  #     amount: 1
+  #     name: '&fHoney of the Eater'
+  #     lore1: "Out of the eater, something to eat;"
+  #     lore2: "Out of the strong, something sweet."
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 1
+  - honey_of_the_eater:
+    name: "§fHoney of the Eater"
+    item: "HONEYCOMB"
+    type: "CHARM"
+    lore:
+      - "Out of the eater, something to eat;"
+      - "Out of the strong, something sweet."
+    enchantments:
+      - UNBREAKING:
+        level: 1
+    user_effects:
+      - STRENGTH:
+        level: 4
+      - SLOWNESS:
+        level: 1
+
+  #   '100':
+  #     item: BELL
+  #     amount: 1
+  #     name: '&fHeroic Village Bell'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 1
+  - heroic_village_bell:
+    name: "§fHeroic Village Bell"
+    item: "BELL"
+    type: "CHARM"
+    enchantments:
+      - UNBREAKING:
+        level: 1
+    user_effects:
+      - HERO_OF_THE_VILLAGE:
+        level: 1
+
+  #   '101':
+  #     item: NETHERITE_PICKAXE
+  #     amount: 1
+  #     name: '&eDwarven Pickaxe'
+  #     lore1: '&8Use only for gold!'
+  #     enchantments:
+  #       '1':
+  #         enchantment: efficiency
+  #         level: 10
+
+  - dwarven_pickaxe:
+    name: "§eDwarven Pickaxe"
+    item: "NETHERITE_PICKAXE"
+    type: "WEAPON"
+    lore:
+      - "§8Use only for gold!"
+    enchantments:
+      - EFFICIENCY:
+        level: 10
+  #   '102':
+  #     item: DIAMOND_BOOTS
+  #     amount: 1
+  #     name: "&e&lWinged Boots"
+  #     lore1: "&8Crafted with Zepher wings"
+  #     enchantments:
+  #       '1':
+  #         enchantment: feather_falling
+  #         level: 10
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 10
+  #       '3':
+  #         enchantment: protection
+  #         level: 10
+
+  - winged_boots:
+    name: "§eWinged Boots"
+    item: "DIAMOND_BOOTS"
+    type: "BOOTS"
+    lore:
+      - "§8Crafted with Zepher wings"
+    enchantments:
+      - FEATHER_FALLING:
+        level: 10
+      - UNBREAKING:
+        level: 10
+      - PROTECTION:
+        level: 10
+
+  #   '103':
+  #     item: GOLDEN_HELMET
+  #     amount: 1
+  #     name: '&e&lHalo'
+  #     lore1: '&8Torn from a fallen angel'
+  #     lore2: "&8By Archangel Michel himself"
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 7-10
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 7-10
+  #       '3':
+  #         enchantment: mending
+  #         level: 1
+  - halo:
+    name: "§eHalo"
+    item: "GOLDEN_HELMET"
+    type: "HELMET"
+    lore:
+      - "§8Torn from a fallen angel"
+      - "§8By Archangel Michel himself"
+    enchantments:
+      - PROTECTION:
+        level: 7-10
+      - UNBREAKING:
+        level: 7-10
+      - MENDING:
+        level: 1
+
+  #   '104':
+  #     item: DIAMOND_HELMET
+  #     amount: 1
+  #     name: '&fCat Spirit Helm'
+  #     lore1: '&8Embued with the spirit'
+  #     lore2: "&8of a great and ancient beast"
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 5-15
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 5-15
+  #       '3':
+  #         enchantment: mending
+  #         level: 1
+  - cat_spirit_helm:
+    name: "§fCat Spirit Helm"
+    item: "DIAMOND_HELMET"
+    type: "HELMET"
+    lore:
+      - "§8Embued with the spirit"
+      - "§8of a great and ancient beast"
+    enchantments:
+      - PROTECTION:
+        level: 5-15
+      - UNBREAKING:
+        level: 5-15
+      - MENDING:
+        level: 1
+
+  #   '105':
+  #     item: CROSSBOW
+  #     amount: 1
+  #     name: "&7Shotbow"
+  #     enchantments:
+  #       0:
+  #         enchantment: mending
+  #         level: 1
+  #       1:
+  #         enchantment: unbreaking
+  #         level: 5
+  #       2:
+  #         enchantment: multishot
+  #         level: 1
+  #       3:
+  #         enchantment: piercing
+  #         level: 1
+  #       4:
+  #         enchantment: quick_charge
+  #         level: 3
+  - shotbow:
+    name: "§7Shotbow"
+    item: "CROSSBOW"
+    type: "WEAPON"
+    enchantments:
+      - MENDING:
+        level: 1
+      - UNBREAKING:
+        level: 5
+      - MULTISHOT:
+        level: 1
+      - PIERCING:
+        level: 1
+      - QUICK_CHARGE:
+        level: 3
+
+  #   '106':
+  #     item: DIAMOND_LEGGINGS
+  #     amount: 1
+  #     name: "&7&lKing Uthers Greaves"
+  #     lore1: '&8Lost long ago by a legend'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 4-10
+  #       '2':
+  #         enchantment: thorns
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 4-10
+  #       '4':
+  #         enchantment: mending
+  #         level: 1
+  - king_uthers_greaves:
+    name: "§7&lKing Uthers Greaves"
+    item: "DIAMOND_LEGGINGS"
+    type: "LEGGINGS"
+    lore:
+      - "§8Lost long ago by a legend"
+    enchantments:
+      - PROTECTION:
+        level: 4-10
+      - THORNS:
+        level: 1
+      - UNBREAKING:
+        level: 4-10
+      - MENDING:
+        level: 1
+
+  #   '107':
+  #     item: WRITTEN_BOOK
+  #     amount: 1
+  #     name: '&f&lThe Holy Bible'
+  #     enchantments:
+  #       '1':
+  #         enchantment: smite
+  #         level: 77
+  - holy_bible:
+    name: "§f&lThe Holy Bible"
+    item: "WRITTEN_BOOK"
+    type: "BOOK"
+    enchantments:
+      - SMITE:
+        level: 7
+    user_effects:
+      - GLOWING:
+        level: 1
+
+  #   '108':
+  #     item: MILK_BUCKET
+  #     amount: 1
+  #     name: "&f&lMother's Milk"
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 1
+  - mothers_milk:
+    name: "§f&lMother's Milk"
+    item: "MILK_BUCKET"
+    type: "BUCKET"
+    enchantments:
+      - UNBREAKING:
+        level: 1
+    user_effects:
+      - REGENERATION:
+        level: 1
+      - HASTE:
+        level: 1
+
+  #   '109':
+  #     item: NETHERITE_INGOT
+  #     amount: 1
+  - netherite_ingot:
+    item: "NETHERITE_INGOT"
+    amount: 1
+
+  #   '110':
+  #     item: NETHERITE_SCRAP
+  #     amount: 2-6
+  - netherite_scrap:
+    item: "NETHERITE_SCRAP"
+    amount: 2-6
+
+  #   '112':
+  #     item: NETHERITE_SWORD
+  #     amount: 1
+  #     name: '&c&lWrathbringer'
+  #     lore1: "&4A righteous wrath this is not"
+  #     enchantments:
+  #       '1':
+  #         enchantment: sharpness
+  #         level: 3-10
+  #       '2':
+  #         enchantment: unbreaking
+  #         level: 1-5
+  #         chance: 25
+  #       '4':
+  #         enchantment: bane_of_arthropods
+  #         level: 1-8
+  #         chance: 15
+  #       '5':
+  #         enchantment: smite
+  #         level: 1-8
+  #         chance: 15
+  #       '6':
+  #         enchantment: fire_aspect
+  #         level: 1-5
+  #         chance: 30
+  #       '7':
+  #         enchantment: looting
+  #         level: 1-10
+  #         chance: 35
+  #       '8':
+  #         enchantment: mending
+  #         level: 1
+  #         chance: 15
+  - wrathbringer:
+    name: "§c&lWrathbringer"
+    item: "NETHERITE_SWORD"
+    type: "SWORD"
+    lore:
+      - "§4A righteous wrath this is not"
+    enchantments:
+      - SHARPNESS:
+        level: 3-10
+      - UNBREAKING:
+        level: 1-5
+        chance: 25
+      - BANE_OF_ARTHROPODS:
+        level: 1-8
+        chance: 15
+      - SMITE:
+        level: 1-8
+        chance: 15
+      - FIRE_ASPECT:
+        level: 1-5
+        chance: 30
+      - LOOTING:
+        level: 1-10
+        chance: 35
+      - MENDING:
+        level: 1
+        chance: 15
+    user_effects:
+      - BAD_OMEN:
+        level: 1
+        chance: 15
+
+  #   '113':
+  #     item: NETHERITE_CHESTPLATE
+  #     amount: 1
+  #     name: "&6&lPlate of Greed"
+  #     lore1: '&6Take and eat, fill thy belly'
+  #     enchantments:
+  #       '1':
+  #         enchantment: protection
+  #         level: 3-10
+  #         chance: 30
+  #       '2':
+  #         enchantment: thorns
+  #         level: 1-10
+  #         chance: 25
+  #       '3':
+  #         enchantment: unbreaking
+  #         level: 1-10
+  #         chance: 24
+  #       '4':
+  #         enchantment: fire_protection
+  #         level: 1-10
+  #         chance: 15
+  #       '5':
+  #         enchantment: mending
+  #         level: 1
+  - plate_of_greed:
+    name: "§6&lPlate of Greed"
+    item: "NETHERITE_CHESTPLATE"
+    type: "CHESTPLATE"
+    lore:
+      - "§6Take and eat, fill thy belly"
+    enchantments:
+      - PROTECTION:
+        level: 3-10
+        chance: 30
+      - THORNS:
+        level: 1-10
+        chance: 25
+      - UNBREAKING:
+        level: 1-10
+        chance: 24
+      - FIRE_PROTECTION:
+        level: 1-10
+        chance: 15
+      - MENDING:
+        level: 1
+    user_effects:
+      - HUNGER:
+        level: 1
+
+  #   '114':
+  #     item: KELP
+  #     amount: 1
+  #     name: '&e&lGlow Leaf'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 1
+  - glow_leaf:
+    name: "§e&lGlow Leaf"
+    item: "KELP"
+    type: "FOOD"
+    enchantments:
+      - UNBREAKING:
+        level: 1
+    user_effects:
+      - GLOWING:
+        level: 1
+
+  #   '115':
+  #     item: GLOW_BERRIES
+  #     amount: 1
+  #     name: '&e&lFruit of Odin'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 10
+  - fruit_of_odin:
+    name: "§e&lFruit of Odin"
+    item: "GLOW_BERRIES"
+    type: "FOOD"
+    enchantments:
+      - UNBREAKING:
+        level: 10
+    consume_effects: #! Mockup of consume effects for food, implement before pull request is merged
+      - GLOWING:
+        level: 1
+        duration: 60
+      - REGENERATION:
+        level: 1
+        duration: 60
+      - STRENGTH:
+        level: 1
+        duration: 60
+      - SPEED:
+        level: 1
+        duration: 60
+
+  #   '116':
+  #     item: DRIED_KELP
+  #     amount: 1
+  #     name: '&4&lStinky Animal Poo'
+  #     enchantments:
+  #       '1':
+  #         enchantment: thorns
+  #         level: 10
+  - stinky_animal_poo:
+    name: "§4&lStinky Animal Poo"
+    item: "DRIED_KELP"
+    type: "FOOD"
+    enchantments:
+      - THORNS:
+        level: 10
+    consume_effects: #! Mockup of consume effects for food, implement before pull request is merged
+      - BAD_OMEN:
+        level: 1
+        duration: 300
+      - NAUSEA:
+        level: 1
+        duration: 300
+      - UNLUCK:
+        level: 1
+        duration: 300
+      - SLOWNESS:
+        level: 1
+        duration: 30
+      - WEAKNESS:
+        level: 1
+        duration: 30
+      - POSION:
+        level: 1
+        duration: 30
+
+  #   '117':
+  #     item: HONEY_BOTTLE
+  #     amount: 1
+  #     name: '&e&lNectar of the Gods'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 10
+  - nectar_of_the_gods:
+    name: "§e&lNectar of the Gods"
+    item: "HONEY_BOTTLE"
+    type: "FOOD"
+    enchantments:
+      - UNBREAKING:
+        level: 10
+    consume_effects: #! Mockup of consume effects for food, implement before pull request is merged
+      - HEALTH_BOOST:
+        level: 1
+        duration: 120
+      - DAMAGE_RESISTANCE:
+        level: 2
+        duration: 120
+      - INSTANT_HEALTH:
+        level: 2
+        duration: 5
+      - REGENERATION:
+        level: 2
+        duration: 120
+
+  #   '118':
+  #     item: GOLDEN_APPLE
+  #     amount: 1
+  #     name: '&6&lNotch Apple'
+  #     lore1: '&6Gone but never forgotten...'
+  - notch_apple:
+    name: "§6&lNotch Apple"
+    item: "GOLDEN_APPLE"
+    type: "FOOD"
+    lore:
+      - "§6Gone but never forgotten..."
+    consume_effects:
+      - GLOWING:
+        level: 1
+        duration: 60
+      - STRENGTH:
+        level: 5
+        duration: 60
+      - INSTANT_HEALTH:
+        level: 5
+        duration: 60
+      - REGENERATION:
+        level: 5
+        duration: 60
+
+  #   '119':
+  #     item: SWEET_BERRIES
+  #     amount: 1
+  #     name: '&2&lMistletoe'
+  #     lore1: '&4Great for fertility,'
+  #     lore2: '&4Or can be used to fell a god'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 10
+  - mistletoe:
+    name: "§2&lMistletoe"
+    item: "SWEET_BERRIES"
+    type: "FOOD"
+    lore:
+      - "§4Great for fertility,"
+      - "§4Or can be used to fell a god"
+    enchantments:
+      - UNBREAKING:
+        level: 10
+    consume_effects:
+      - STRENGTH:
+        level: 10
+        duration: 10
+
+  #   '120':
+  #     item: HONEY_BOTTLE
+  #     amount: 1
+  #     name: "&6&lSampson's Honey"
+  #     lore1: 'Grants a great and terrible power,'
+  #     lore2: 'A power to move the very earth.'
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 10
+  - sampson_honey:
+    name: "§6&lSampson's Honey"
+    item: "HONEY_BOTTLE"
+    type: "FOOD"
+    lore:
+      - "§6Grants a great and terrible power,"
+      - "§6A power to move the very earth."
+    enchantments:
+      - UNBREAKING:
+        level: 10
+    consume_effects:
+      - HEALTH_BOOST:
+        level: 1
+        duration: 120
+      - DAMAGE_RESISTANCE:
+        level: 2
+        duration: 120
+      - INSTANT_HEALTH:
+        level: 2
+        duration: 5
+      - REGENERATION:
+        level: 2
+        duration: 120
+
+  #   '121':
+  #     item: AMETHYST_SHARD
+  #     amount: 1
+  #     name: "&d&lPower Shard"
+  #     lore1: "&5All the power is yours,"
+  #     lore2: "&5None shall stand against you"
+  #     enchantments:
+  #       '1':
+  #         enchantment: unbreaking
+  #         level: 1
+  - power_shard:
+    name: "§d&lPower Shard"
+    item: "AMETHYST_SHARD"
+    type: "CHARM"
+    lore:
+      - "§5All the power is yours,"
+      - "§5None shall stand against you"
+    enchantments:
+      - UNBREAKING:
+        level: 1
+    user_effects:
+      - DAMAGE_RESISTANCE:
+        level: 1
+      - STRENGTH:
+        level: 1
+
+  #   '122':
+  #     item: AMETHYST_CLUSTER
+  #     amount: 1
+  - amethyst_cluster:
+    name: "§d&lAmethyst Cluster"
+    item: "AMETHYST_CLUSTER"
+    type: "ITEM"
+    amount: 1
