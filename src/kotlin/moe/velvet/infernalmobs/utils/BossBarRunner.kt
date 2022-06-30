@@ -17,7 +17,7 @@ class BossBarRunner : BukkitRunnable() {
                 getInfernalDataClass(it)?.bossbar?.progress = (it as LivingEntity).health /  e.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
                 if (it.health <= 0) getInfernalDataClass(it)?.bossbar?.removeAll()
             }
-            if (!nearbyEntites.toSet().any { e -> e in nearbyEntites.toSet() }) {
+            if (!nearbyEntites.toSet().any { e -> e in getInfernalDataClass(it)!!.bossbar.players.toSet() }) {
                 getInfernalDataClass(it)?.bossbar?.removeAll()
             }
         }
