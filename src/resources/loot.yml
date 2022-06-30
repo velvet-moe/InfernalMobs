@@ -3133,7 +3133,9 @@ loot:
       name: "crack"
       type: "CHARM"
       item: "SUGAR"
-      weight: 0
+      lore:
+        - "§c§lsniff"
+      weight: 1
       user_effects:
         - SPEED:
             level: 25

@@ -2,10 +2,7 @@ package moe.velvet.infernalmobs
 
 //import com.zaxxer.hikari.HikariConfig
 //import com.zaxxer.hikari.HikariDataSource
-import moe.velvet.infernalmobs.commands.Debug
-import moe.velvet.infernalmobs.commands.FlushBossbars
-import moe.velvet.infernalmobs.commands.SpawnInfernal
-import moe.velvet.infernalmobs.commands.SpawnLoot
+import moe.velvet.infernalmobs.commands.*
 import moe.velvet.infernalmobs.utils.*
 import org.bstats.bukkit.Metrics
 import org.bukkit.Bukkit
@@ -37,6 +34,7 @@ class InfernalMobs : JavaPlugin() {
         this.getCommand("spawnloot")?.setExecutor(SpawnLoot())
         this.getCommand("idebug")?.setExecutor(Debug())
         this.getCommand("flushbossbars")?.setExecutor(FlushBossbars())
+        this.getCommand("iquery")?.setExecutor(Query())
         logger.info("InfernalMobs successfully loaded!")
         // Register runners
         LootEffectRunner().runTaskTimer(this, 0, 20 * 5)
@@ -70,8 +68,8 @@ class InfernalMobs : JavaPlugin() {
     }
 
     private fun loadPluginConfig() {
-        config.addDefault("infernalSpawnChance", 5)
-        config.addDefault("globalLootDropChance", 5)
+        config.addDefault("infernalSpawnChance", 10)
+        config.addDefault("globalLootDropChance", 99)
         config.addDefault("infernalNamePrefix", "§cInfernal ")
         config.addDefault("infernalNameSuffix", "")
         config.addDefault("allowedInfernalMobTypes", listOf(
@@ -137,6 +135,10 @@ class InfernalMobs : JavaPlugin() {
             0, 1, 2, 3, 4, 8, 7, 6, 5, 17, 40
         ))
         config.addDefault("mainHandCharmsEnabled", true)
+        config.addDefault("bossBarColor", "RED")
+        config.addDefault("infernalHealthScaleFactor", 2.0)
+        config.addDefault("infernalMaxLevel", 10)
+        config.addDefault("infernalHealthLevelScaleFactor", 1.0)
         config.options().copyDefaults(true)
         saveConfig()
     }

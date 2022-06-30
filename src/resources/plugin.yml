@@ -1,5 +1,5 @@
 name: InfernalMobs
-version: '0.0.1'
+version: '0.1.0'
 main: moe.velvet.infernalmobs.InfernalMobs
 api-version: 1.19
 prefix: 'InfernalMobs'
@@ -26,3 +26,5 @@ commands:
     usage: /idebug
   flushbossbars:
     usage: /flushbossbars
+  iquery:
+    usage: /iquery

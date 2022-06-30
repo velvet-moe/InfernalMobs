@@ -2,6 +2,7 @@ package moe.velvet.infernalmobs.utils
 
 import moe.velvet.infernalmobs.getInstance
 import moe.velvet.infernalmobs.powers.*
+import org.bukkit.boss.BarColor
 import org.bukkit.entity.Entity
 import org.bukkit.entity.EntityType
 
@@ -16,6 +17,10 @@ object Glob {
         val POWERS: HashMap<String, Power>
         val ALLOWED_CHARM_SLOTS: List<Int> // 40 is offhand
         val MAINHAND_CHARMS_ENABLED: Boolean
+        val BOSSBAR_COLOR: BarColor
+        val INFERNAL_HEALTH_SCALE_FACTOR: Double
+        val INFERNAL_MAX_LEVEL: Int
+        val INFERNAL_HEALTH_LEVEL_SCALE_FACTOR: Double
 
         init {
             val config = getInstance().config
@@ -52,6 +57,10 @@ object Glob {
             }
             this.ALLOWED_CHARM_SLOTS = config.getIntegerList("allowedCharmSlots")
             this.MAINHAND_CHARMS_ENABLED = config.getBoolean("mainHandCharmsEnabled")
+            this.BOSSBAR_COLOR = enumValueOf(config.getString("bossBarColor")!!)
+            this.INFERNAL_HEALTH_SCALE_FACTOR = config.getDouble("infernalHealthScaleFactor")
+            this.INFERNAL_MAX_LEVEL = config.getInt("infernalMaxLevel")
+            this.INFERNAL_HEALTH_LEVEL_SCALE_FACTOR = config.getDouble("infernalHealthLevelScaleFactor")
         }
     }
     var InfernalList: MutableList<Entity> = mutableListOf()

@@ -1,6 +1,6 @@
 package moe.velvet.infernalmobs.powers
 
-import org.bukkit.attribute.Attribute
+import moe.velvet.infernalmobs.getInfernalDataClass
 import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 
@@ -12,7 +12,7 @@ class LifeSteal : Power {
         //if ((0 until 10-scaleFactor).random() != 0 ) return true
         if (damager !is LivingEntity) return true
 
-        val appliedHeals = if (amount > damager.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value) 0.0 else amount
+        val appliedHeals = if (amount > getInfernalDataClass(damager)!!.maxHealth) 0.0 else amount
 
         damager.health = damager.health + appliedHeals
 

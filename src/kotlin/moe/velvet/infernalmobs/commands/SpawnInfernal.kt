@@ -5,6 +5,7 @@ import moe.velvet.infernalmobs.utils.Glob
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabExecutor
+import org.bukkit.entity.Ageable
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
@@ -41,6 +42,11 @@ class SpawnInfernal : TabExecutor {
                     // This > "/command hello " does not count as one
                     // argument because of the space after the hello.
                 } else if (args.size == 2) {
+                    (1..Glob.Constants.INFERNAL_MAX_LEVEL).forEach {
+                        list.add(it.toString())
+                    }
+                    return list
+                } else if (args.size >= 3) {
                     Glob.Constants.POWERS.values.forEach {
                         list.add(it.name.lowercase())
                     }
@@ -64,11 +70,16 @@ class SpawnInfernal : TabExecutor {
             mobType = Glob.Constants.ALLOWED_MOB_TYPES.first { it.name.lowercase() == args[0].lowercase() }
         } else return false
 
-        val args = args.drop(1).toTypedArray()
+        var args = args.drop(1).toTypedArray()
+        val level = args[0].toInt()
+        args = args.drop(1).toTypedArray()
 
         if (args[0] == "*") {
             val entity = sender.world.spawnEntity(sender.location, mobType) as LivingEntity
-            val mob = InfernalMob(entity)
+            if (entity is Ageable) {
+                entity.setAdult()
+            }
+            val mob = InfernalMob(entity, level)
             mob.abilities = Glob.Constants.POWERS.values.toMutableList()
             for (arg in args) {
                 if (arg.startsWith("!")) {
@@ -86,20 +97,38 @@ class SpawnInfernal : TabExecutor {
                 return true
             }
         }
+        if (args[0] == "r") {
+            val entity = sender.world.spawnEntity(sender.location, mobType) as LivingEntity
+            if (entity is Ageable) {
+                entity.setAdult()
+            }
+            val mob = InfernalMob(entity, level)
+            (1..level).forEach { _ ->
+                mob.abilities.add(Glob.Constants.POWERS.values.random())
+            }
+            mob.abilities.forEach {
+                it.onSpawn(
+                    entity
+                )
+            }
+            return true
+        }
+
+        val entity = sender.world.spawnEntity(sender.location, mobType) as LivingEntity
+        if (entity is Ageable) {
+            entity.setAdult()
+        }
+        val mob = InfernalMob(entity, level)
 
 
-        val entity2 = sender.world.spawnEntity(sender.location, mobType) as LivingEntity
-        val mob2 = InfernalMob(entity2)
+        mob.abilities = args.map { Glob.Constants.POWERS[it.lowercase()]!! }.toMutableList()
 
-
-        mob2.abilities = args.map { Glob.Constants.POWERS[it.lowercase()]!! }.toMutableList()
-
-        mob2.abilities.forEach {
+        mob.abilities.forEach {
             it.onSpawn(
-                entity2
+                entity
             )
         }
-        Glob.InfernalList.add(mob2.entity)
+        Glob.InfernalList.add(mob.entity)
         return true
     }
 }

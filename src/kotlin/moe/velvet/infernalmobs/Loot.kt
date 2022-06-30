@@ -47,9 +47,19 @@ fun createLoot(type: Loot, amount: Int = 1): ItemStack {
     return item
 }
 
-fun createRandomLoot(amount: Int = 1): ItemStack {
-    val lootType = LootFactory.lootWeights.random()
-    return LootFactory.lootTable[lootType]?.let { createLoot(it, amount) }!!
+fun createRandomLoot(weight: Int, amount: Int = 1): ItemStack {
+//    val lootType = LootFactory.lootWeights.random()
+    //var possibleLoot: Pair<Int, String> = Pair(0, "")
+//    (0..(if (weight == 1) weight else weight * 2)).forEach { _ ->
+//        val l = LootFactory.lootWeights.random()
+//        var c = LootFactory.lootWeights.count { it == l}
+//        possibleLoot = if (c > possibleLoot.first) possibleLoot else Pair(c, l)
+//    }
+    var loot: MutableList<Loot> = mutableListOf()
+    (1..(if (weight == 1) weight else weight * 2)).forEach{ _ -> loot.add(LootFactory.lootTable.values.random()) }
+    loot.removeIf { it.weight == 0 }
+    loot.sortBy { it.weight }
+    return createLoot(loot[0], amount)
 }
 
 fun isLoot(item: ItemStack): Boolean {

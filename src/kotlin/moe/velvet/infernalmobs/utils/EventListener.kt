@@ -2,29 +2,53 @@ package moe.velvet.infernalmobs.utils
 
 import moe.velvet.infernalmobs.*
 import org.bukkit.Sound
+import org.bukkit.entity.Ageable
 import org.bukkit.entity.Item
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.block.Action
 import org.bukkit.event.entity.*
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
+import kotlin.random.Random
 
 class EventListener : Listener {
     // For infernal mobs
     @EventHandler
     fun onEntitySpawn(e: EntitySpawnEvent) {
         // Assign infernal status if chance is met
-        if ((0..100).random() > Glob.Constants.INFERNAL_CHANCE) return
+        if ((0..100).random() >= Glob.Constants.INFERNAL_CHANCE) return
         if (e.entity is Item) return
-        if (e.entity.entitySpawnReason == CreatureSpawnEvent.SpawnReason.CUSTOM) return
+       //if (e.entity.entitySpawnReason == CreatureSpawnEvent.SpawnReason.CUSTOM)
+        if (e.entity.entitySpawnReason != CreatureSpawnEvent.SpawnReason.NATURAL) return
         if (!Glob.Constants.ALLOWED_MOB_TYPES.contains(e.entity.type)) return
-        val infernal = InfernalMob(e.entity as LivingEntity)
+        if (e.entity is Ageable) {
+            (e.entity as Ageable).setAdult()
+        }
 
-        infernal.abilities = mutableListOf(
-            Glob.Constants.POWERS.values.random()
-        )
+        var suc = false
+        var level = 1
+        (1..Glob.Constants.INFERNAL_MAX_LEVEL).forEach {
+            if (suc) return@forEach
+            if (Random.nextBoolean()) {
+                if ((0..100).random() <= 90) {
+                    suc = true
+                    return@forEach
+                }
+            }
+            level = it
+        }
+        level += 2
+        val infernal = InfernalMob(e.entity as LivingEntity, level)
+
+//        infernal.abilities = mutableListOf(
+//            Glob.Constants.POWERS.values.random()
+//        )
+        (1..level).forEach { _ ->
+            infernal.abilities.add(Glob.Constants.POWERS.values.random())
+        }
 
         // Trigger events
         //TODO: Optimize ( for all events )
@@ -55,9 +79,11 @@ class EventListener : Listener {
                 return
             }
         }
+
         getInfernalDataClass(e.entity)!!.bossbar.removeAll()
-        if ((0..100).random() < Glob.Constants.LOOT_DROP_CHANCE) {
-            val drop = createRandomLoot()
+
+        if ((0..100).random() <= Glob.Constants.LOOT_DROP_CHANCE) {
+            val drop = createRandomLoot(getInfernalDataClass(e.entity)!!.level)
             e.entity.world.dropItemNaturally(e.entity.location, drop)
         }
     }
@@ -186,8 +212,14 @@ class EventListener : Listener {
     @EventHandler
     fun onPlace(e: PlayerInteractEvent) {
         if (e.item?.let { isLoot(it) } == true) {
-            e.isCancelled = true
-            return
+            if (e.action != Action.RIGHT_CLICK_BLOCK) return
+            when (getLoot(e.item!!)?.type) {
+                LootType.Charm -> {
+                     e.player.sendMessage("§c[Infernal Mobs] You can't place charms!")
+                    e.isCancelled = true
+                }
+                else -> {}
+            }
         }
     }
 }
