@@ -8,6 +8,7 @@ loot:
       name: "§bSprint Charm" # This is the name of the loot
       item: "FEATHER" # This is the item corresponding to the key
       type: "CHARM" # This is the type of the loot (ITEM, ARMOR, CHARM, WEAPON, POTION, FOOD)
+      weight: 0
       lore: # This is a list of the lore of the item
         - "§7Gives you a §bSprint §7effect"
       user_effects: # This is a list of effects that will be applied to the player when the loot is in a effect slot
@@ -29,6 +30,7 @@ loot:
       name: "§2Murder Axe"
       item: "IRON_AXE"
       type: "WEAPON"
+      weight: 15
       lore:
         - "§aFor felling the undead!"
       enchantments:
@@ -55,6 +57,7 @@ loot:
       name: "§cFlame §6Bow"
       item: "BOW"
       type: "WEAPON"
+      weight: 15
       lore:
         - "§eShoots fire to the heavens!"
       enchantments:
@@ -77,6 +80,7 @@ loot:
       name: "§6Sword of Fortune"
       item: "IRON_SWORD"
       type: "WEAPON"
+      weight: 10
       lore:
         - "§eMay the luck be ever in your favor"
       enchantments:
@@ -97,6 +101,7 @@ loot:
       name: "Wacker"
       item: "WOODEN_SWORD"
       type: "WEAPON"
+      weight: 10
       lore:
         - "Wack 'em back!"
       enchantments:
@@ -109,6 +114,7 @@ loot:
   - diamond_drop:
       item: "DIAMOND"
       type: "ITEM"
+      weight: 30
       amount: 5
 
   #   '6':
@@ -125,6 +131,7 @@ loot:
       name: "§8Arthropod Bane"
       item: "DIAMOND_SWORD"
       type: "WEAPON"
+      weight: 15
       lore:
         - "§7Slays spiders like a hot knife through butter"
       enchantments:
@@ -151,6 +158,7 @@ loot:
       name: "§fThe Excalibur"
       item: "DIAMOND_SWORD"
       type: "WEAPON"
+      weight: 5
       lore:
         - "§7King Author's sword."
       enchantments:
@@ -181,6 +189,7 @@ loot:
       name: "§7Backhoe"
       item: "DIAMOND_SHOVEL"
       type: "WEAPON"
+      weight: 10
       lore:
         - "§8Digs too fast!"
       enchantments:
@@ -209,6 +218,7 @@ loot:
       name: "§fSilky"
       item: "DIAMOND_PICKAXE"
       type: "WEAPON"
+      weight: 20
       lore:
         - "§7Silkier than milk!"
       enchantments:
@@ -237,6 +247,7 @@ loot:
       name: "§cCanadian Axe"
       item: "DIAMOND_AXE"
       type: "WEAPON"
+      weight: 15
       lore:
         - "§fChops way to fast!"
       enchantments:
@@ -264,6 +275,7 @@ loot:
       name: "§6Butter Knife"
       item: "GOLDEN_SWORD"
       type: "WEAPON"
+      weight: 20
       lore:
         - "§eCan only cut butter..."
       enchantments:
@@ -289,6 +301,7 @@ loot:
       name: "§6GOLDEN Spoon"
       item: "GOLDEN_SHOVEL"
       type: "WEAPON"
+      weight: 15
       lore:
         - "§eUse with caution."
       enchantments:
@@ -313,6 +326,7 @@ loot:
       name: "§7Glass Drill"
       item: "GOLDEN_PICKAXE"
       type: "WEAPON"
+      weight: 10
       lore:
         - "§8Use in case of emergency!"
       enchantments:
@@ -340,6 +354,7 @@ loot:
       name: "§cAmerican Axe"
       item: "GOLDEN_AXE"
       type: "WEAPON"
+      weight: 15
       lore:
         - "§1Worse than the Canadian axe..."
       enchantments:
@@ -364,6 +379,7 @@ loot:
       name: "§fQuarts Hoe"
       item: "IRON_HOE"
       type: "WEAPON"
+      weight: 10
       lore:
         - "§yBetter than iron!"
       enchantments:
@@ -385,6 +401,7 @@ loot:
       name: "Magic Hoe"
       item: "DIAMOND_HOE"
       type: "WEAPON"
+      weight: 10
       lore:
         - "Forged by God."
         - "Well, by God's Gardener"
@@ -412,6 +429,7 @@ loot:
       name: "§4Old Shirt"
       item: "LEATHER_CHESTPLATE"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§4Still good!"
       enchantments:
@@ -439,6 +457,7 @@ loot:
       name: "§9Water Helmet"
       item: "CHAINMAIL_HELMET"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§1Go in the sea!"
       enchantments:
@@ -464,6 +483,7 @@ loot:
       name: "§2Creeper Gear"
       item: "CHAINMAIL_CHESTPLATE"
       type: "ARMOR"
+      weight: 20
       lore:
         - "§aPart 2"
       enchantments:
@@ -492,6 +512,7 @@ loot:
       name: "Thorny Pants"
       item: "CHAINMAIL_LEGGINGS"
       type: "ARMOR"
+      weight: 10
       lore:
         - "Very Sharp..."
       enchantments:
@@ -519,6 +540,7 @@ loot:
       name: "§7Travellers Boots"
       item: "CHAINMAIL_BOOTS"
       type: "ARMOR"
+      weight: 15
       lore:
         - "§8Go on a journey!"
       enchantments:
@@ -544,6 +566,7 @@ loot:
       name: "§7Rusty Iron Helm"
       item: "IRON_HELMET"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§8Rusted but still good."
       enchantments:
@@ -566,6 +589,7 @@ loot:
       name: "§cArchers Vest"
       item: "IRON_CHESTPLATE"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§4Take an arrow to the knee!"
       enchantments:
@@ -589,6 +613,7 @@ loot:
       name: "Firemen Pants"
       item: "IRON_LEGGINGS"
       type: "ARMOR"
+      weight: 15
       lore:
         - "Take 'em to a fire!"
       enchantments:
@@ -614,6 +639,7 @@ loot:
       name: "Fall Far Boots"
       item: "IRON_BOOTS"
       type: "ARMOR"
+      weight: 15
       lore:
         - "Mark 1"
       enchantments:
@@ -642,6 +668,7 @@ loot:
       name: "§9Fish Hat"
       item: "GOLDEN_HELMET"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§1Be the fish."
       enchantments:
@@ -669,6 +696,7 @@ loot:
       name: "§9Fish Body"
       item: "GOLDEN_CHESTPLATE"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§1Be the fish."
       enchantments:
@@ -697,6 +725,7 @@ loot:
       name: "§9Fish Legs"
       item: "GOLDEN_LEGGINGS"
       type: "ARMOR"
+      weight: 20
       lore:
         - "§1Be the fish."
       enchantments:
@@ -727,6 +756,7 @@ loot:
       name: "§9Fish Feet"
       item: "GOLDEN_BOOTS"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§1Be the fish."
       enchantments:
@@ -757,6 +787,7 @@ loot:
       name: "§3Drowned Helm"
       item: "DIAMOND_HELMET"
       type: "ARMOR"
+      weight: 15
       lore:
         - "§3From the Drowned Gods watery halls."
       enchantments:
@@ -784,6 +815,7 @@ loot:
       name: "§3Drowned Plate"
       item: "DIAMOND_CHESTPLATE"
       type: "ARMOR"
+      weight: 15
       lore:
         - "§3From the Drowned Gods watery halls."
       enchantments:
@@ -809,6 +841,7 @@ loot:
       name: "§3Drowned Leggings"
       item: "DIAMOND_LEGGINGS"
       type: "ARMOR"
+      weight: 15
       lore:
         - "§3From the Drowned Gods watery halls."
       enchantments:
@@ -840,6 +873,7 @@ loot:
       name: "§3Drowned Boots"
       item: "DIAMOND_BOOTS"
       type: "ARMOR"
+      weight: 15
       lore:
         - "§3From the Drowned Gods watery halls."
       enchantments:
@@ -862,6 +896,7 @@ loot:
       name: "§eThor's Apple"
       item: "GOLDEN_APPLE"
       type: "FOOD"
+      weight: 10
       lore:
         - "§eStolen from Thors own table."
 
@@ -875,6 +910,7 @@ loot:
       name: "Easter Bunny's Carrot"
       item: "GOLDEN_CARROT"
       type: "FOOD"
+      weight: 20
       lore:
         - "He will kill to get it back!"
 
@@ -892,6 +928,7 @@ loot:
       name: "Spider Whacker"
       item: "DIAMOND_SWORD"
       type: "WEAPON"
+      weight: 20
       lore:
         - "Whack spiders."
       enchantments:
@@ -915,6 +952,7 @@ loot:
       name: "§aGardener's Shovel"
       item: "DIAMOND_SHOVEL"
       type: "WEAPON"
+      weight: 10
       lore:
         - "Dig in the garden."
       enchantments:
@@ -940,6 +978,7 @@ loot:
       name: "Dwarf's Pick"
       item: "DIAMOND_PICKAXE"
       type: "WEAPON"
+      weight: 15
       lore:
         - "Diggy diggy hole."
       enchantments:
@@ -965,6 +1004,7 @@ loot:
       name: "§7Battle Axe"
       item: "DIAMOND_AXE"
       type: "WEAPON"
+      weight: 15
       lore:
         - "Saxon war axe."
       enchantments:
@@ -990,6 +1030,7 @@ loot:
       name: "§4Demon Sword"
       item: "GOLDEN_SWORD"
       type: "WEAPON"
+      weight: 5
       lore:
         - "Fiery hot!"
       enchantments:
@@ -1019,6 +1060,7 @@ loot:
       name: "§6Disposable Quick Shovel"
       item: "GOLDEN_SHOVEL"
       type: "WEAPON"
+      weight: 10
       lore:
         - "Quick but disposable."
       enchantments:
@@ -1044,6 +1086,7 @@ loot:
       name: "§6Butter Pick"
       item: "GOLDEN_PICKAXE"
       type: "WEAPON"
+      weight: 15
       lore:
         - "Practically made from butter."
       enchantments:
@@ -1069,6 +1112,7 @@ loot:
       name: "Slim Axe"
       item: "GOLDEN_AXE"
       type: "WEAPON"
+      weight: 10
       lore:
         - "Small but deadly"
       enchantments:
@@ -1091,6 +1135,7 @@ loot:
       name: "§7Old Hoe"
       item: "IRON_HOE"
       type: "WEAPON"
+      weight: 15
       lore:
         - "§8Not much use."
       enchantments:
@@ -1111,6 +1156,7 @@ loot:
       name: "§aGardener's Hoe"
       item: "DIAMOND_HOE"
       type: "WEAPON"
+      weight: 50
       lore:
         - "§aBe a Gardener"
       enchantments:
@@ -1137,6 +1183,7 @@ loot:
       name: "§4Boiled Leather Shirt"
       item: "LEATHER_CHESTPLATE"
       type: "ARMOR"
+      weight: 15
       lore:
         - "§4Better than nothing."
       enchantments:
@@ -1164,6 +1211,7 @@ loot:
       name: "§7Sharp Hat"
       item: "CHAINMAIL_HELMET"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§8So sharp..."
       enchantments:
@@ -1189,6 +1237,7 @@ loot:
       name: "§7Sharp Chest"
       item: "CHAINMAIL_CHESTPLATE"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§8So sharp..."
       enchantments:
@@ -1211,6 +1260,7 @@ loot:
       name: "§4Traveller's Pants"
       item: "CHAINMAIL_LEGGINGS"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§4Worn but still good."
       enchantments:
@@ -1234,6 +1284,7 @@ loot:
       name: "Strong Boots"
       item: "CHAINMAIL_BOOTS"
       type: "ARMOR"
+      weight: 15
       lore:
         - "So strong!"
       enchantments:
@@ -1259,6 +1310,7 @@ loot:
       name: "Cast Iron Helm"
       item: "IRON_HELMET"
       type: "ARMOR"
+      weight: 10
       lore:
         - "Its Iron but cast."
       enchantments:
@@ -1281,6 +1333,7 @@ loot:
       name: "§7Spiked Chestplate"
       item: "IRON_CHESTPLATE"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§8Nothing can survive this."
       enchantments:
@@ -1304,6 +1357,7 @@ loot:
       name: "§cArchers Pants"
       item: "IRON_LEGGINGS"
       type: "ARMOR"
+      weight: 15
       lore:
         - "§4Stops ''em arrows."
       enchantments:
@@ -1329,6 +1383,7 @@ loot:
       name: "Stiletto Heels"
       item: "IRON_BOOTS"
       type: "ARMOR"
+      weight: 15
       lore:
         - "Don't walk one me!"
       enchantments:
@@ -1357,6 +1412,7 @@ loot:
       name: "§0Death Mask"
       item: "GOLDEN_HELMET"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§8Breath death itself!"
       enchantments:
@@ -1392,6 +1448,7 @@ loot:
       name: "§6Kings Breastplate"
       item: "GOLDEN_CHESTPLATE"
       type: "ARMOR"
+      weight: 15
       lore:
         - "§eOnly for kings,"
         - "§eThose of noble birth,"
@@ -1423,6 +1480,7 @@ loot:
       name: "§cArchers Pants MK 2"
       item: "DIAMOND_LEGGINGS"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§4Even better than MK 1!"
       enchantments:
@@ -1448,6 +1506,7 @@ loot:
       name: "§27 League Boots"
       item: "DIAMOND_BOOTS"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§2Just say the magic word."
       enchantments:
@@ -1479,6 +1538,7 @@ loot:
       name: "§bMermen Helm"
       item: "DIAMOND_HELMET"
       type: "ARMOR"
+      weight: 15
       lore:
         - "§bDon't drown!"
       enchantments:
@@ -1506,6 +1566,7 @@ loot:
       name: "§cArchers Vest MK2"
       item: "DIAMOND_CHESTPLATE"
       type: "ARMOR"
+      weight: 20
       lore:
         - "§4Also has spikes!"
       enchantments:
@@ -1540,6 +1601,7 @@ loot:
       name: "§2Robinhood''s Bow"
       item: "BOW"
       type: "WEAPON"
+      weight: 10
       lore:
         - "§4The Legend Lives!"
       enchantments:
@@ -1577,6 +1639,7 @@ loot:
       name: "§eBrave Flame Bow"
       item: "BOW"
       type: "WEAPON"
+      weight: 10
       lore:
         - "§cBurnt may a village."
       enchantments:
@@ -1604,6 +1667,7 @@ loot:
       name: "§6Squaw Flame Bow"
       item: "BOW"
       type: "WEAPON"
+      weight: 30
       lore:
         - "§4Cooked many a pig!"
       enchantments:
@@ -1632,6 +1696,7 @@ loot:
       name: "§cArchers Bow"
       item: "BOW"
       type: "WEAPON"
+      weight: 10
       lore:
         - "§4Time to shoot!"
       enchantments:
@@ -1654,6 +1719,7 @@ loot:
       name: "§6God Apple"
       item: "GOLDEN_APPLE"
       type: "FOOD"
+      weight: 15
       lore:
         - "§6Not eaten my mortals!"
         - "§6And never can be!"
@@ -1671,6 +1737,7 @@ loot:
       name: "§2Zombie Gear"
       item: "ZOMBIE_HEAD"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§2Be the Zombie you want to be!"
       enchantments:
@@ -1686,6 +1753,7 @@ loot:
       name: "§4Nether Star"
       item: "NETHER_STAR"
       type: "ITEM"
+      weight: 15
       lore:
         - "§0From the depths of the Nether!"
 
@@ -1699,6 +1767,7 @@ loot:
       name: "§aPoison Potion"
       item: "SPLASH_POTION"
       type: "POTION"
+      weight: 10
       lore:
         - "§2Very deadly."
       potion_effects:
@@ -1716,6 +1785,7 @@ loot:
       name: "§fInvisibility Potion"
       item: "POTION"
       type: "POTION"
+      weight: 15
       lore:
         - "§7From nowhere?"
       potion_effects:
@@ -1733,6 +1803,7 @@ loot:
       name: "§dLife Potion"
       item: "SPLASH_POTION"
       type: "POTION"
+      weight: 5
       lore:
         - "§5Not many left on earth."
       potion_effects:
@@ -1763,6 +1834,7 @@ loot:
       name: "§3Eliminator's Helmet"
       item: "IRON_HELMET"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§eOnly for the best!"
       enchantments:
@@ -1795,6 +1867,7 @@ loot:
       name: "§3Eliminator's Chestplate"
       item: "DIAMOND_CHESTPLATE"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§eYou have to be awesome!"
       enchantments:
@@ -1825,6 +1898,7 @@ loot:
       name: "§3Eliminator's Pants"
       item: "IRON_LEGGINGS"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§eThe most epic!"
       enchantments:
@@ -1858,6 +1932,7 @@ loot:
       name: "§3Eliminator's Boots"
       item: "IRON_BOOTS"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§eThat much more cool!"
       enchantments:
@@ -1879,6 +1954,7 @@ loot:
       name: "§6Hunger Charm"
       item: "GLISTERING_MELON_SLICE"
       type: "CHARM"
+      weight: 5
       lore:
         - "§7Hunger no more"
       user_effects:
@@ -1901,6 +1977,7 @@ loot:
       name: "§aPoisoned Blade"
       item: "IRON_SWORD"
       type: "WEAPON"
+      weight: 10
       lore:
         - "§2Poison all ye strike!"
       enchantments:
@@ -1926,8 +2003,7 @@ loot:
       name: "§4Vampire Stake"
       item: "STICK"
       type: "WEAPON"
-      lore:
-        - "§cHeals you when used"
+      weight: 10
       enchantments:
         - SHARPNESS:
             level: 2-5
@@ -1941,6 +2017,7 @@ loot:
       name: "§7Bunny Charm"
       item: "RABBIT_FOOT"
       type: "CHARM"
+      weight: 10
       lore:
         - "§8Jump Higher"
       user_effects:
@@ -1957,6 +2034,7 @@ loot:
       name: "§7Wither Charm"
       item: "WITHER_SKELETON_SKULL"
       type: "CHARM"
+      weight: 5
       lore:
         - "§8Wither all ye fight!"
       hit_effects:
@@ -1973,6 +2051,7 @@ loot:
       name: "§7Cloak Charm"
       item: "FIREWORK_ROCKET"
       type: "CHARM"
+      weight: 15
       lore:
         - "§8They will see you not"
       user_effects:
@@ -1988,6 +2067,7 @@ loot:
       name: "§cWeakness Charm"
       item: "BONE"
       type: "CHARM"
+      weight: 5
       lore:
         - "§4Weaken your foes"
       hit_effects:
@@ -2004,6 +2084,7 @@ loot:
       name: "§bAqua Charm"
       item: "PRISMARINE_CRYSTALS"
       type: "CHARM"
+      weight: 15
       lore:
         - "§3Become the fish..."
       user_effects:
@@ -2017,6 +2098,7 @@ loot:
       name: "§bOcean's Core"
       item: "CONDUIT"
       type: "CHARM"
+      weight: 10
       lore:
         - "§3Become the sea..."
       user_effects:
@@ -2033,6 +2115,7 @@ loot:
       name: "§bGuardian Tooth"
       item: "PRISMARINE_SHARD"
       type: "CHARM"
+      weight: 10
       lore:
         - "§3It can only make"
         - "§3you stronger!"
@@ -2049,6 +2132,7 @@ loot:
       name: "§eSoggy Sponge"
       item: "WET_SPONGE"
       type: "ITEM"
+      weight: 30
 
   #   '85':
   #     item: ELYTRA
@@ -2065,6 +2149,7 @@ loot:
       name: "§4Beetle Wings"
       item: "ELYTRA"
       type: "ARMOR"
+      weight: 10
       enchantments:
         - PROTECTION:
             level: 1-3
@@ -2122,6 +2207,7 @@ loot:
       name: "§e§lAngel Soul"
       item: "DRAGON_BREATH"
       type: "CHARM"
+      weight: 10
       lore:
         - "§6Bottled for your convenience"
       user_effects:
@@ -2136,6 +2222,7 @@ loot:
       name: "§6GOLDEN Coins"
       item: "BEETROOT_SEEDS"
       type: "ITEM"
+      weight: 15
       lore:
         - "§7They bring you luck"
       user_effects:
@@ -2161,6 +2248,7 @@ loot:
       name: "§f§lSky Sword"
       item: "IRON_SWORD"
       type: "WEAPON"
+      weight: 20
       enchantments:
         - UNBREAKING:
             level: 1-5
@@ -2206,7 +2294,7 @@ loot:
       name: "§c§lDemon Blade"
       item: "DIAMOND_SWORD"
       type: "WEAPON"
-      unbreaking: 90
+      weight: 10
       lore:
         - "§4Forged in the depths of the nether!"
       enchantments:
@@ -2228,6 +2316,7 @@ loot:
       name: "§fSugar of Ianite"
       item: "SUGAR"
       type: "CHARM"
+      weight: 10
       lore:
         - "§8Gives you the speed of Ianite."
       enchantments:
@@ -2249,6 +2338,7 @@ loot:
       name: "§4Totem of Death"
       item: "TOTEM_OF_UNDYING"
       type: "ITEM"
+      weight: 10
       enchantments:
         - THORNS:
             level: 1
@@ -2267,6 +2357,7 @@ loot:
       name: "§eTotem of Life"
       item: "TOTEM_OF_UNDYING"
       type: "ITEM"
+      weight: 10
       enchantments:
         - UNBREAKING:
             level: 1
@@ -2285,6 +2376,7 @@ loot:
       name: "§cFire Crystal"
       item: "RED_GLAZED_TERRACOTTA"
       type: "ITEM"
+      weight: 10
       enchantments:
         - UNBREAKING:
             level: 1
@@ -2314,7 +2406,7 @@ loot:
       name: "§bTrident of Poseidon"
       item: "TRIDENT"
       type: "WEAPON"
-      unbreaking: 90
+      weight: 20
       lore:
         - "§3Wielded by Poseidon during the great war."
       enchantments:
@@ -2339,6 +2431,7 @@ loot:
       name: "§eAngel Feather"
       item: "FEATHER"
       type: "ITEM"
+      weight: 15
       enchantments:
         - UNBREAKING:
             level: 1
@@ -2357,6 +2450,7 @@ loot:
       name: "§2Pickel of Power"
       item: "SEA_PICKLE"
       type: "ITEM"
+      weight: 20
       enchantments:
         - UNBREAKING:
             level: 1
@@ -2377,6 +2471,7 @@ loot:
       name: "§fHoney of the Eater"
       item: "HONEYCOMB"
       type: "CHARM"
+      weight: 10
       lore:
         - "Out of the eater, something to eat;"
         - "Out of the strong, something sweet."
@@ -2401,6 +2496,7 @@ loot:
       name: "§fHeroic Village Bell"
       item: "BELL"
       type: "CHARM"
+      weight: 7
       enchantments:
         - UNBREAKING:
             level: 1
@@ -2422,6 +2518,7 @@ loot:
       name: "§eDwarven Pickaxe"
       item: "NETHERITE_PICKAXE"
       type: "WEAPON"
+      weight: 5
       lore:
         - "§8Use only for gold!"
       enchantments:
@@ -2447,6 +2544,7 @@ loot:
       name: "§eWinged Boots"
       item: "DIAMOND_BOOTS"
       type: "ARMOR"
+      weight: 10
       lore:
         - "§8Crafted with Zepher wings"
       enchantments:
@@ -2477,6 +2575,7 @@ loot:
       name: "§eHalo"
       item: "GOLDEN_HELMET"
       type: "ARMOR"
+      weight: 15
       lore:
         - "§8Torn from a fallen angel"
         - "§8By Archangel Michel himself"
@@ -2508,6 +2607,7 @@ loot:
       name: "§fCat Spirit Helm"
       item: "DIAMOND_HELMET"
       type: "ARMOR"
+      weight: 5
       lore:
         - "§8Embued with the spirit"
         - "§8of a great and ancient beast"
@@ -2543,6 +2643,7 @@ loot:
       name: "§7Shotbow"
       item: "CROSSBOW"
       type: "WEAPON"
+      weight: 5
       enchantments:
         - MENDING:
             level: 1
@@ -2576,6 +2677,7 @@ loot:
       name: "§7§lKing Uthers Greaves"
       item: "DIAMOND_LEGGINGS"
       type: "ARMOR"
+      weight: 5
       lore:
         - "§8Lost long ago by a legend"
       enchantments:
@@ -2600,6 +2702,7 @@ loot:
       name: "§f§lThe Holy Bible"
       item: "WRITTEN_BOOK"
       type: "WEAPON"
+      weight: 15
       enchantments:
         - SMITE:
             level: 7
@@ -2619,6 +2722,7 @@ loot:
       name: "§f§lMother's Milk"
       item: "MILK_BUCKET"
       type: "CHARM"
+      weight: 5
       enchantments:
         - UNBREAKING:
             level: 1
@@ -2634,6 +2738,7 @@ loot:
   - netherite_ingot:
       item: "NETHERITE_INGOT"
       type: "ITEM"
+      weight: 20
       amount: 1
 
   #   '110':
@@ -2642,6 +2747,7 @@ loot:
   - netherite_scrap:
       item: "NETHERITE_SCRAP"
       type: "ITEM"
+      weight: 25
       amount: 2-6
 
   #   '112':
@@ -2681,6 +2787,7 @@ loot:
       name: "§c§lWrathbringer"
       item: "NETHERITE_SWORD"
       type: "WEAPON"
+      weight: 5
       lore:
         - "§4A righteous wrath this is not"
       enchantments:
@@ -2738,6 +2845,7 @@ loot:
       name: "§6§lPlate of Greed"
       item: "NETHERITE_CHESTPLATE"
       type: "ARMOR"
+      weight: 5
       lore:
         - "§6Take and eat, fill thy belly"
       enchantments:
@@ -2771,6 +2879,7 @@ loot:
       name: "§e§lGlow Leaf"
       item: "KELP"
       type: "FOOD"
+      weight: 20
       enchantments:
         - UNBREAKING:
             level: 1
@@ -2790,6 +2899,7 @@ loot:
       name: "§e§lFruit of Odin"
       item: "GLOW_BERRIES"
       type: "FOOD"
+      weight: 10
       enchantments:
         - UNBREAKING:
             level: 10
@@ -2819,6 +2929,7 @@ loot:
       name: "§4§lStinky Animal Poo"
       item: "DRIED_KELP"
       type: "FOOD"
+      weight: 20
       enchantments:
         - THORNS:
             level: 10
@@ -2854,6 +2965,7 @@ loot:
       name: "§e§lNectar of the Gods"
       item: "HONEY_BOTTLE"
       type: "FOOD"
+      weight: 5
       enchantments:
         - UNBREAKING:
             level: 10
@@ -2880,6 +2992,7 @@ loot:
       name: "§6§lNotch Apple"
       item: "GOLDEN_APPLE"
       type: "FOOD"
+      weight: 5
       lore:
         - "§6Gone but never forgotten..."
       consume_effects:
@@ -2910,6 +3023,7 @@ loot:
       name: "§2§lMistletoe"
       item: "SWEET_BERRIES"
       type: "FOOD"
+      weight: 10
       lore:
         - "§4Great for fertility,"
         - "§4Or can be used to fell a god"
@@ -2935,6 +3049,7 @@ loot:
       name: "§6§lSampson's Honey"
       item: "HONEY_BOTTLE"
       type: "FOOD"
+      weight: 5
       lore:
         - "§6Grants a great and terrible power,"
         - "§6A power to move the very earth."
@@ -2969,6 +3084,7 @@ loot:
       name: "§d§lPower Shard"
       item: "AMETHYST_SHARD"
       type: "CHARM"
+      weight: 5
       lore:
         - "§5All the power is yours,"
         - "§5None shall stand against you"
@@ -2988,11 +3104,14 @@ loot:
       name: "§d§lAmethyst Cluster"
       item: "AMETHYST_CLUSTER"
       type: "ITEM"
+      weight: 30
       amount: 1
+
   - warden_touch:
       name: "§1Warden's Touch"
       type: "CHARM"
       item: "SCULK_SENSOR"
+      weight: 30
       revenge_effects:
         - DARKNESS:
             level: 1

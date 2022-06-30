@@ -14,7 +14,7 @@ class Loot {
     lateinit var id: String
     var name: String? = null
     lateinit var type: LootType
-    var amount by Delegates.notNull<Int>()
+    lateinit var amount: List<Int>
     var weight by Delegates.notNull<Int>()
     var lore: List<Component>? = null
     var userEffects: List<PotionEffect>? = null // effects on the user of the loot
@@ -27,7 +27,7 @@ class Loot {
 }
 
 fun createLoot(type: Loot, amount: Int = 1): ItemStack {
-    val item = ItemStack(type.material, amount * type.amount)
+    val item = ItemStack(type.material, amount * type.amount.random())
     val meta = item.itemMeta
     if (meta is PotionMeta) {
         type.potioneffects?.forEach {

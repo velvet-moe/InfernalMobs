@@ -8,6 +8,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.*
+import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 
 class EventListener : Listener {
@@ -179,6 +180,14 @@ class EventListener : Listener {
                     }
                 }
             }
+        }
+    }
+
+    @EventHandler
+    fun onPlace(e: PlayerInteractEvent) {
+        if (e.item?.let { isLoot(it) } == true) {
+            e.isCancelled = true
+            return
         }
     }
 }

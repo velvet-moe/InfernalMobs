@@ -32,14 +32,14 @@ object LootFactory {
                     }
                     var weight = 1
                     if (items.contains("weight")) { weight = items["weight"] as Int }
-                    var amount = 1
+                    var amount: List<Int> = listOf(1)
                     if (items.contains("amount")) {
                         val data = items["amount"].toString()
                         if (data.contains("-")) {
                             var p = data.split("-")
-                            amount = (p[0].toInt()..p[1].toInt()).random()
+                            amount = (p[0].toInt()..p[1].toInt()).toList()
                         } else {
-                            amount = data.toIntOrNull() ?: 1
+                            amount = listOf(data.toIntOrNull() ?: 1)
                         }
                     }
                     val type = enumValueOf<LootType>((items["type"] as String?)!!.lowercase()
