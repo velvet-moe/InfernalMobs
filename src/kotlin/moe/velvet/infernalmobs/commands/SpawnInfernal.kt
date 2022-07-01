@@ -81,21 +81,8 @@ class SpawnInfernal : TabExecutor {
             }
             val mob = InfernalMob(entity, level)
             mob.abilities = Glob.Constants.POWERS.values.toMutableList()
-            for (arg in args) {
-                if (arg.startsWith("!")) {
-                    for ((i, power) in mob.abilities.withIndex()) {
-                        if (power.name == arg.drop(1)) {
-                            mob.abilities.removeAt(i)
-                        }
-                    }
-                }
-                mob.abilities.forEach {
-                    it.onSpawn(
-                        entity
-                    )
-                }
-                return true
-            }
+
+            Glob.InfernalList.add(mob.entity)
         }
         if (args[0] == "r") {
             val entity = sender.world.spawnEntity(sender.location, mobType) as LivingEntity
@@ -111,6 +98,7 @@ class SpawnInfernal : TabExecutor {
                     entity
                 )
             }
+            Glob.InfernalList.add(mob.entity)
             return true
         }
 

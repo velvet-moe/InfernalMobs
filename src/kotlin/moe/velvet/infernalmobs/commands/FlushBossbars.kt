@@ -15,7 +15,6 @@ class FlushBossbars : CommandExecutor {
             if (isInfernalMob(it)) {
                 val data = getInfernalDataClass(it)!!
                 data.bossbar.removePlayer(p0)
-                data.bossbarPlayerList.remove(p0)
             }
         }
         return true

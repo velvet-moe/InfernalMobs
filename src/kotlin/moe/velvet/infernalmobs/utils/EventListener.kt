@@ -40,7 +40,6 @@ class EventListener : Listener {
             }
             level = it
         }
-        level += 2
         val infernal = InfernalMob(e.entity as LivingEntity, level)
 
 //        infernal.abilities = mutableListOf(
@@ -49,7 +48,6 @@ class EventListener : Listener {
         (1..level).forEach { _ ->
             infernal.abilities.add(Glob.Constants.POWERS.values.random())
         }
-
         // Trigger events
         //TODO: Optimize ( for all events )
         if (!(infernal.abilities.map { it.onSpawn(e.entity) }.contains(true))) {
@@ -79,13 +77,9 @@ class EventListener : Listener {
                 return
             }
         }
-
-        getInfernalDataClass(e.entity)!!.bossbar.removeAll()
-
-        if ((0..100).random() <= Glob.Constants.LOOT_DROP_CHANCE) {
-            val drop = createRandomLoot(getInfernalDataClass(e.entity)!!.level)
-            e.entity.world.dropItemNaturally(e.entity.location, drop)
-        }
+        getInfernalDataClass(e.entity)!!.bossbar.isVisible = false
+        val drop = createRandomLoot()
+        e.entity.world.dropItemNaturally(e.entity.location, drop)
     }
 
     @EventHandler

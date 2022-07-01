@@ -38,8 +38,10 @@ class InfernalMobs : JavaPlugin() {
         logger.info("InfernalMobs successfully loaded!")
         // Register runners
         LootEffectRunner().runTaskTimer(this, 0, 20 * 5)
-        ParticleRunner().runTaskTimerAsynchronously(this, 0, 5)
-        BossBarRunner().runTaskTimer(this, 0, 5)
+        ParticleRunner().runTaskTimerAsynchronously(this, 0, 10)
+        if (config.getBoolean("bossBarEnabled")) {
+            BossBarRunner().runTaskTimer(this, 0, 10)
+        }
         // Broadcast to all players
         Bukkit.getOnlinePlayers().forEach {
             it.sendMessage("InfernalMobs §7v${this.description.version} §ahas been enabled!")
@@ -52,7 +54,6 @@ class InfernalMobs : JavaPlugin() {
             if (isInfernalMob(it)) {
                 val data = getInfernalDataClass(it)!!
                 data.bossbar.removeAll()
-                data.bossbarPlayerList.clear()
             }
             it.remove()
         }
@@ -68,7 +69,7 @@ class InfernalMobs : JavaPlugin() {
     }
 
     private fun loadPluginConfig() {
-        config.addDefault("infernalSpawnChance", 10)
+        config.addDefault("infernalSpawnChance", 1)
         config.addDefault("globalLootDropChance", 99)
         config.addDefault("infernalNamePrefix", "§cInfernal ")
         config.addDefault("infernalNameSuffix", "")
@@ -137,8 +138,10 @@ class InfernalMobs : JavaPlugin() {
         config.addDefault("mainHandCharmsEnabled", true)
         config.addDefault("bossBarColor", "RED")
         config.addDefault("infernalHealthScaleFactor", 2.0)
-        config.addDefault("infernalMaxLevel", 10)
-        config.addDefault("infernalHealthLevelScaleFactor", 1.0)
+        config.addDefault("infernalMaxLevel", 5)
+        config.addDefault("infernalHealthLevelScaleFactor", 10.0)
+        config.addDefault("bossBarRange", 25.0)
+        config.addDefault("bossBarEnabled", true)
         config.options().copyDefaults(true)
         saveConfig()
     }

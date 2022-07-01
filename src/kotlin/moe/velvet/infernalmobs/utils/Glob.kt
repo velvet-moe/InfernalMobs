@@ -5,11 +5,12 @@ import moe.velvet.infernalmobs.powers.*
 import org.bukkit.boss.BarColor
 import org.bukkit.entity.Entity
 import org.bukkit.entity.EntityType
+import java.util.concurrent.CopyOnWriteArrayList
 
 object Glob {
     object Constants {
         val INFERNAL_CHANCE: Int
-        val LOOT_DROP_CHANCE: Int
+        //val LOOT_DROP_CHANCE: Int
         val INFERNAL_NAME_PREFIX: String
         val INFERNAL_NAME_SUFFIX: String
         // const val SCALING_FACTOR = 1
@@ -21,11 +22,12 @@ object Glob {
         val INFERNAL_HEALTH_SCALE_FACTOR: Double
         val INFERNAL_MAX_LEVEL: Int
         val INFERNAL_HEALTH_LEVEL_SCALE_FACTOR: Double
+        val BOSSBAR_RANGE: Double
 
         init {
             val config = getInstance().config
             this.INFERNAL_CHANCE = config.getInt("infernalSpawnChance")
-            this.LOOT_DROP_CHANCE = config.getInt("globalLootDropChance")
+            //this.LOOT_DROP_CHANCE = config.getInt("globalLootDropChance")
             this.INFERNAL_NAME_PREFIX = config.getString("infernalNamePrefix") ?: ""
             this.INFERNAL_NAME_SUFFIX = config.getString("infernalNameSuffix") ?: ""
             this.ALLOWED_MOB_TYPES = config.getStringList("allowedInfernalMobTypes").map { enumValueOf(it) }
@@ -61,7 +63,8 @@ object Glob {
             this.INFERNAL_HEALTH_SCALE_FACTOR = config.getDouble("infernalHealthScaleFactor")
             this.INFERNAL_MAX_LEVEL = config.getInt("infernalMaxLevel")
             this.INFERNAL_HEALTH_LEVEL_SCALE_FACTOR = config.getDouble("infernalHealthLevelScaleFactor")
+            this.BOSSBAR_RANGE = config.getDouble("bossBarRange")
         }
     }
-    var InfernalList: MutableList<Entity> = mutableListOf()
+    var InfernalList: CopyOnWriteArrayList<Entity> = CopyOnWriteArrayList()
 }

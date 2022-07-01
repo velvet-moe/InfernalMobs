@@ -3135,7 +3135,7 @@ loot:
       item: "SUGAR"
       lore:
         - "§c§lsniff"
-      weight: 1
+      weight: 0
       user_effects:
         - SPEED:
             level: 25

@@ -8,7 +8,6 @@ import org.bukkit.attribute.Attribute
 import org.bukkit.boss.BarStyle
 import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
-import org.bukkit.entity.Player
 import org.bukkit.metadata.FixedMetadataValue
 
 data class InfernalMob(
@@ -19,8 +18,8 @@ data class InfernalMob(
     var abilities: MutableList<Power> = mutableListOf() // Default Power
     var lives = 0
     var bossbar = Bukkit.createBossBar("${Glob.Constants.INFERNAL_NAME_PREFIX}${entity.name}${Glob.Constants.INFERNAL_NAME_SUFFIX} ${convertToRoman(level)}", Glob.Constants.BOSSBAR_COLOR, BarStyle.SEGMENTED_20)
-    var bossbarPlayerList: MutableList<Player> = mutableListOf()
-    var maxHealth = entity.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value * Glob.Constants.INFERNAL_HEALTH_SCALE_FACTOR * (level * Glob.Constants.INFERNAL_HEALTH_LEVEL_SCALE_FACTOR)
+    //var bossbarPlayerList: MutableList<Player> = mutableListOf()
+    var maxHealth = entity.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value * Glob.Constants.INFERNAL_HEALTH_SCALE_FACTOR + (level * Glob.Constants.INFERNAL_HEALTH_LEVEL_SCALE_FACTOR)
 
     init {
         if (maxHealth >= 1023.0) maxHealth = 1023.0
