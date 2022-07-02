@@ -11,7 +11,7 @@ class Weakness : Power {
 
     override fun onDamageEntity(e: Entity, damager: Entity, amount: Double): Boolean {
         if (e !is LivingEntity) return true
-        e.addPotionEffect(PotionEffect(PotionEffectType.WEAKNESS, 20 * 5, 0))
+        e.addPotionEffect(PotionEffect(PotionEffectType.WEAKNESS, 20 * 10, 0))
 
         return true
     }

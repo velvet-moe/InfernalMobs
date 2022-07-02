@@ -11,7 +11,7 @@ class Sapper : Power {
 
     override fun onDamageEntity(e: Entity, damager: Entity, amount: Double): Boolean {
         if (e !is LivingEntity) return true
-        e.addPotionEffect(PotionEffect(PotionEffectType.HUNGER, 20 * 5 * scaleFactor / 10, 2))
+        e.addPotionEffect(PotionEffect(PotionEffectType.HUNGER, 20 * 5, 2))
 
         return true
     }
