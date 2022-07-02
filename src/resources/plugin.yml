@@ -1,5 +1,5 @@
 name: InfernalMobs
-version: '0.1.0'
+version: '0.1.1'
 main: moe.velvet.infernalmobs.InfernalMobs
 api-version: 1.19
 prefix: 'InfernalMobs'

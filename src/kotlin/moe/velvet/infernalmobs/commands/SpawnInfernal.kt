@@ -72,6 +72,7 @@ class SpawnInfernal : TabExecutor {
 
         var args = args.drop(1).toTypedArray()
         val level = args[0].toInt()
+        if (level > Glob.Constants.INFERNAL_MAX_LEVEL) return false
         args = args.drop(1).toTypedArray()
 
         if (args[0] == "*") {
@@ -90,8 +91,13 @@ class SpawnInfernal : TabExecutor {
                 entity.setAdult()
             }
             val mob = InfernalMob(entity, level)
-            (1..level).forEach { _ ->
-                mob.abilities.add(Glob.Constants.POWERS.values.random())
+
+            (1..level).forEach {
+                var cPower = Glob.Constants.POWERS.values.random()
+                while (mob.abilities.size < it) {
+                    if (cPower !in mob.abilities) mob.abilities.add(cPower)
+                    cPower = Glob.Constants.POWERS.values.random()
+                }
             }
             mob.abilities.forEach {
                 it.onSpawn(
