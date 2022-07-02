@@ -51,7 +51,7 @@ jobs:
           name: InfernalMobs (v${{ steps.changelog-maven.outputs.version }})
           path: target/infernalmobs-${{ steps.changelog-maven.outputs.version }}.jar
 
-      - if: ${{ steps.changelog-maven.outputs.skipped == 'false' }}
+      - if: ${{ steps.changelog-maven.outputs.skipped == 'false' }} && github.event.pull_request.merged == true
         name: Create Release
         uses: ncipollo/release-action@v1
         with:
