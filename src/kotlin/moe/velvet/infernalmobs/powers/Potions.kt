@@ -21,7 +21,7 @@ class Potions : Power {
 
         val stack = ItemStack(Material.POTION)
         val potion = stack.itemMeta as PotionMeta
-        potion.addCustomEffect(PotionEffect(PotionEffectType.values().random(), 20 * 60, 0), true)
+        potion.addCustomEffect(PotionEffect(PotionEffectType.values().random(), 20 * 5, 0), true)
         stack.itemMeta = potion
 
         val sploc = e.location.clone()

@@ -12,7 +12,7 @@ class Poisonous : Power {
     override fun onDamageEntity(e: Entity, damager: Entity, amount: Double): Boolean {
         if (e !is LivingEntity) return true
 
-        e.addPotionEffect(PotionEffect(PotionEffectType.POISON, 20 * 5 * scaleFactor, 1))
+        e.addPotionEffect(PotionEffect(PotionEffectType.POISON, 20 * 5, 1))
         return true
     }
 }

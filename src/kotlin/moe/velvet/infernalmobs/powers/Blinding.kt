@@ -12,7 +12,7 @@ class Blinding : Power {
     override fun onDamageEntity(e: Entity, damager: Entity, amount: Double): Boolean {
         if (e !is LivingEntity) return true
 
-        e.addPotionEffect(PotionEffect(PotionEffectType.DARKNESS, 20 * 15 * scaleFactor, 1 * scaleFactor - 1))
+        e.addPotionEffect(PotionEffect(PotionEffectType.DARKNESS, 20 * 5, 0))
         return true
     }
 }
