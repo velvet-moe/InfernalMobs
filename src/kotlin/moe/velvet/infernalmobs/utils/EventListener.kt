@@ -45,8 +45,12 @@ class EventListener : Listener {
 //        infernal.abilities = mutableListOf(
 //            Glob.Constants.POWERS.values.random()
 //        )
-        (1..level).forEach { _ ->
-            infernal.abilities.add(Glob.Constants.POWERS.values.random())
+        (1..level).forEach {
+            var cPower = Glob.Constants.POWERS.values.random()
+            while (infernal.abilities.size < it) {
+                if (cPower !in infernal.abilities) infernal.abilities.add(cPower)
+                cPower = Glob.Constants.POWERS.values.random()
+            }
         }
         // Trigger events
         //TODO: Optimize ( for all events )
