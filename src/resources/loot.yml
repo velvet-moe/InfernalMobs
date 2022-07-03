@@ -2375,7 +2375,7 @@ loot:
   - fire_crystal:
       name: "§cFire Crystal"
       item: "RED_GLAZED_TERRACOTTA"
-      type: "ITEM"
+      type: "CHARM"
       weight: 10
       enchantments:
         - UNBREAKING:
