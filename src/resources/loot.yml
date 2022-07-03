@@ -2221,7 +2221,7 @@ loot:
   - golden_coins:
       name: "§6GOLDEN Coins"
       item: "BEETROOT_SEEDS"
-      type: "ITEM"
+      type: "CHARM"
       weight: 15
       lore:
         - "§7They bring you luck"
