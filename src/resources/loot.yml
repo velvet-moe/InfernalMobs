@@ -2447,9 +2447,9 @@ loot:
   #         enchantment: unbreaking
   #         level: 1
   - pickle_of_power:
-      name: "§2Pickel of Power"
+      name: "§2Pickle of Power"
       item: "SEA_PICKLE"
-      type: "ITEM"
+      type: "CHARM"
       weight: 20
       enchantments:
         - UNBREAKING:
