@@ -3114,8 +3114,8 @@ loot:
       weight: 5
       revenge_effects:
         - DARKNESS:
-            level: 1
-            duration: 5
+            level: 0
+            duration: 2
   - rod_of_death:
       name: "§d§lrod of death"
       lore:
