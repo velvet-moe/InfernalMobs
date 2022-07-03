@@ -1954,7 +1954,7 @@ loot:
       name: "§6Hunger Charm"
       item: "GLISTERING_MELON_SLICE"
       type: "CHARM"
-      weight: 5
+      weight: 1
       lore:
         - "§7Hunger no more"
       user_effects:
@@ -2722,7 +2722,7 @@ loot:
       name: "§f§lMother's Milk"
       item: "MILK_BUCKET"
       type: "CHARM"
-      weight: 5
+      weight: 1
       enchantments:
         - UNBREAKING:
             level: 1
@@ -3084,7 +3084,7 @@ loot:
       name: "§d§lPower Shard"
       item: "AMETHYST_SHARD"
       type: "CHARM"
-      weight: 5
+      weight: 1
       lore:
         - "§5All the power is yours,"
         - "§5None shall stand against you"
@@ -3111,7 +3111,7 @@ loot:
       name: "§1Warden's Touch"
       type: "CHARM"
       item: "SCULK_SENSOR"
-      weight: 5
+      weight: 1
       revenge_effects:
         - DARKNESS:
             level: 0
