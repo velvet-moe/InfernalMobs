@@ -2654,7 +2654,7 @@ loot:
         - PIERCING:
             level: 1
         - QUICK_CHARGE:
-            level: 3
+            level: 5
 
   #   '106':
   #     item: DIAMOND_LEGGINGS
