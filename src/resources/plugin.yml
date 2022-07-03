@@ -24,7 +24,10 @@ commands:
     category: infernalmobs
   idebug:
     usage: /idebug
+    permission: infernalmobs.idebug
   flushbossbars:
     usage: /flushbossbars
+    permission: infernalmobs.flushbossbars
   iquery:
     usage: /iquery
+    permission: infernalmobs.iquery
