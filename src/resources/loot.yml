@@ -2482,7 +2482,7 @@ loot:
         - STRENGTH:
             level: 4
         - SLOWNESS:
-            level: 1
+            level: 3
 
   #   '100':
   #     item: BELL
