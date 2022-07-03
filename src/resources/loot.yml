@@ -3111,7 +3111,7 @@ loot:
       name: "§1Warden's Touch"
       type: "CHARM"
       item: "SCULK_SENSOR"
-      weight: 30
+      weight: 5
       revenge_effects:
         - DARKNESS:
             level: 1
