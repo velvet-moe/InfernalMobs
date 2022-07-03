@@ -2430,7 +2430,7 @@ loot:
   - angel_feather:
       name: "§eAngel Feather"
       item: "FEATHER"
-      type: "ITEM"
+      type: "CHARM"
       weight: 15
       enchantments:
         - UNBREAKING:
