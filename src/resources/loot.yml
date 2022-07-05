@@ -1954,7 +1954,7 @@ loot:
       name: "§6Hunger Charm"
       item: "GLISTERING_MELON_SLICE"
       type: "CHARM"
-      weight: 5
+      weight: 1
       lore:
         - "§7Hunger no more"
       user_effects:
@@ -2221,7 +2221,7 @@ loot:
   - golden_coins:
       name: "§6GOLDEN Coins"
       item: "BEETROOT_SEEDS"
-      type: "ITEM"
+      type: "CHARM"
       weight: 15
       lore:
         - "§7They bring you luck"
@@ -2375,7 +2375,7 @@ loot:
   - fire_crystal:
       name: "§cFire Crystal"
       item: "RED_GLAZED_TERRACOTTA"
-      type: "ITEM"
+      type: "CHARM"
       weight: 10
       enchantments:
         - UNBREAKING:
@@ -2430,7 +2430,7 @@ loot:
   - angel_feather:
       name: "§eAngel Feather"
       item: "FEATHER"
-      type: "ITEM"
+      type: "CHARM"
       weight: 15
       enchantments:
         - UNBREAKING:
@@ -2447,9 +2447,9 @@ loot:
   #         enchantment: unbreaking
   #         level: 1
   - pickle_of_power:
-      name: "§2Pickel of Power"
+      name: "§2Pickle of Power"
       item: "SEA_PICKLE"
-      type: "ITEM"
+      type: "CHARM"
       weight: 20
       enchantments:
         - UNBREAKING:
@@ -2482,7 +2482,7 @@ loot:
         - STRENGTH:
             level: 4
         - SLOWNESS:
-            level: 1
+            level: 3
 
   #   '100':
   #     item: BELL
@@ -2722,7 +2722,7 @@ loot:
       name: "§f§lMother's Milk"
       item: "MILK_BUCKET"
       type: "CHARM"
-      weight: 5
+      weight: 1
       enchantments:
         - UNBREAKING:
             level: 1
@@ -3084,7 +3084,7 @@ loot:
       name: "§d§lPower Shard"
       item: "AMETHYST_SHARD"
       type: "CHARM"
-      weight: 5
+      weight: 1
       lore:
         - "§5All the power is yours,"
         - "§5None shall stand against you"
@@ -3111,11 +3111,11 @@ loot:
       name: "§1Warden's Touch"
       type: "CHARM"
       item: "SCULK_SENSOR"
-      weight: 30
+      weight: 1
       revenge_effects:
         - DARKNESS:
-            level: 1
-            duration: 5
+            level: 0
+            duration: 2
   - rod_of_death:
       name: "§d§lrod of death"
       lore:
