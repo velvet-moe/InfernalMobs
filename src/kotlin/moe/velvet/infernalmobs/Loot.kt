@@ -42,7 +42,7 @@ fun createLoot(type: Loot, amount: Int = 1): ItemStack {
     }
     //getInstance().logger.info(type.lore.toString())
     meta.lore(type.lore)
-    meta.persistentDataContainer.set(NamespacedKey(getInstance(), "loot-type"), PersistentDataType.STRING, type.id.lowercase())
+    if (type.type != LootType.Item) meta.persistentDataContainer.set(NamespacedKey(getInstance(), "loot-type"), PersistentDataType.STRING, type.id.lowercase())
     item.setItemMeta(meta)
     return item
 }
