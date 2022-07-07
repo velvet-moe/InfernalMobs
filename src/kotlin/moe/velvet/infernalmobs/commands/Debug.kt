@@ -9,9 +9,20 @@ import org.bukkit.Material
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
 
 class Debug : CommandExecutor {
-    override fun onCommand(p0: CommandSender, p1: Command, p2: String, args: Array<out String>): Boolean {
+    override fun onCommand(sender: CommandSender, p1: Command, p2: String, args: Array<out String>): Boolean {
+        if (sender !is Player) {
+            sender.sendMessage("§cYou must be a player to use this command.")
+            return true
+        }
+
+        if (!sender.hasPermission("infernalmobs.debug")) {
+            sender.sendMessage("§cYou do not have permission to use this command.")
+            return true
+        }
+
         if (args.contains("kill")) {
             Glob.InfernalList.forEach {
                 getInfernalDataClass(it)!!.bossbar.removeAll()
@@ -21,7 +32,7 @@ class Debug : CommandExecutor {
         }
 
         if (args.contains("WIPE_ALL_LOOT")) {
-            var done: MutableList<String> = mutableListOf()
+            val done: MutableList<String> = mutableListOf()
             Bukkit.getOfflinePlayers().forEach {
                 it.player?.inventory?.forEach { i ->
                     if (i == null) return@forEach
@@ -43,14 +54,14 @@ class Debug : CommandExecutor {
                     }
                 }
             }
-            p0.sendMessage(done.toString())
+            sender.sendMessage(done.toString())
             return true
         }
 
         if (args.contains("weights")) {
-            p0.sendMessage("${LootFactory.lootTable.map {"${it.key}: ${it.value.weight}"}}")
+            sender.sendMessage("${LootFactory.lootTable.map {"${it.key}: ${it.value.weight}"}}")
         }
-        p0.sendMessage(Glob.InfernalList.map {"$it: ${it.location.toBlockLocation()}"}.toString())
+        sender.sendMessage(Glob.InfernalList.map {"$it: ${it.location.toBlockLocation()}"}.toString())
         //p0.sendMessage(LootFactory.lootTable.keys.toString())
         //getInstance().logger.info(LootFactory.lootTable.keys.toString())
         //p0.sendMessage(LootFactory.lootWeights.toString())

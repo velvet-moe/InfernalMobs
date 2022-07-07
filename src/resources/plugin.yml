@@ -12,22 +12,22 @@ softdepend:
   - 'LuckPerms'
 commands:
   spawninfernal:
-    description: Spawn an infernal zombie
+    description: Spawn an InfernalMob.
     usage: /spawninfernal
     aliases: [ is ]
-    permission: infernalmobs.spawn_infernal
+    permission: infernalmobs.spawninfernal
     category: infernalmobs
   spawnloot:
     description: spawn loot
     usage: /spawnloot
-    permission: infernalmobs.spawn_loot
+    permission: infernalmobs.spawnloot
     category: infernalmobs
   idebug:
     usage: /idebug
-    permission: infernalmobs.idebug
+    permission: infernalmobs.debug
   flushbossbars:
     usage: /flushbossbars
     permission: infernalmobs.flushbossbars
   iquery:
     usage: /iquery
-    permission: infernalmobs.iquery
+    permission: infernalmobs.query
