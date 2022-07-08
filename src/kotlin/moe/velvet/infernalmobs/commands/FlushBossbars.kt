@@ -9,14 +9,24 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
 class FlushBossbars : CommandExecutor {
-    override fun onCommand(p0: CommandSender, p1: Command, p2: String, p3: Array<out String>): Boolean {
-        if (p0 !is Player) return true
+    override fun onCommand(sender: CommandSender, p1: Command, p2: String, p3: Array<out String>): Boolean {
+        if (sender !is Player) {
+            sender.sendMessage("§cYou must be a player to use this command.")
+            return true
+        }
+
+        if (!sender.hasPermission("infernalmobs.flushbossbars")) {
+            sender.sendMessage("§cYou do not have permission to use this command.")
+            return true
+        }
+
         Glob.InfernalList.forEach {
             if (isInfernalMob(it)) {
                 val data = getInfernalDataClass(it)!!
-                data.bossbar.removePlayer(p0)
+                data.bossbar.removePlayer(sender)
             }
         }
+
         return true
     }
 }

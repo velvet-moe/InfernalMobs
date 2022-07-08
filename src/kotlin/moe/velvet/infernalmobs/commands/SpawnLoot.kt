@@ -8,9 +8,22 @@ import org.bukkit.command.TabExecutor
 import org.bukkit.entity.Player
 
 class SpawnLoot : TabExecutor {
-    override fun onCommand(sender: org.bukkit.command.CommandSender, command: org.bukkit.command.Command, label: String, args: Array<out String>): Boolean {
-        if (sender !is Player) return false
-        if (args.isEmpty()) return false
+    override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
+        if (sender !is Player) {
+            sender.sendMessage("§cYou must be a player to use this command.")
+            return true
+        }
+
+        if (!sender.hasPermission("infernalmobs.spawnloot")) {
+            sender.sendMessage("§cYou do not have permission to use this command.")
+            return true
+        }
+
+        if (args.isEmpty()) {
+            sender.sendMessage("§cUsage: /spawnloot <type OR *>")
+            return true
+        }
+
         val lootType = args[0]
         if (lootType == "*") {
             LootFactory.lootTable.forEach {
@@ -28,7 +41,7 @@ class SpawnLoot : TabExecutor {
         p1: Command,
         p2: String,
         p3: Array<out String>
-    ): MutableList<String>? {
+    ): MutableList<String> {
         return LootFactory.lootWeights.toSet().toMutableList()
     }
 }

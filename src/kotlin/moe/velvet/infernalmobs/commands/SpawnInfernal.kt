@@ -63,16 +63,37 @@ class SpawnInfernal : TabExecutor {
     }
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (sender !is Player) return true
-        if (args.isEmpty()) return true
+        if (sender !is Player) {
+            sender.sendMessage("§cYou must be a player to use this command.")
+            return true
+        }
+
+        if (!sender.hasPermission("infernalmobs.spawninfernal")) {
+            sender.sendMessage("§cYou do not have permission to use this command.")
+            return true
+        }
+
+        if (args.isEmpty()) {
+            sender.sendMessage("§cUsage: /spawninfernal <mob> <level> <power>")
+            return true
+        }
+
         val mobType: EntityType
         if (Glob.Constants.ALLOWED_MOB_TYPES.map { it.name.lowercase() }.contains(args[0].lowercase())) {
             mobType = Glob.Constants.ALLOWED_MOB_TYPES.first { it.name.lowercase() == args[0].lowercase() }
-        } else return false
+        } else {
+            sender.sendMessage("§cPlease enter a valid mob type.\n" +
+                    "§cValid mob types: ${Glob.Constants.ALLOWED_MOB_TYPES.map { it.name.lowercase() + ", " }}")
+            return true
+        }
 
         var args = args.drop(1).toTypedArray()
         val level = args[0].toInt()
-        if (level > Glob.Constants.INFERNAL_MAX_LEVEL) return false
+        if (level > Glob.Constants.INFERNAL_MAX_LEVEL) {
+            sender.sendMessage("§cPlease enter a valid level.\n" +
+                    "§cValid levels: 1-${Glob.Constants.INFERNAL_MAX_LEVEL}")
+            return true
+        }
         args = args.drop(1).toTypedArray()
 
         if (args[0] == "*") {
