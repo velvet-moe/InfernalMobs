@@ -43,7 +43,10 @@ fun createLoot(type: Loot, amount: Int = 1): ItemStack {
     //getInstance().logger.info(type.lore.toString())
     meta.lore(type.lore)
     if (type.type != LootType.Item) meta.persistentDataContainer.set(NamespacedKey(getInstance(), "loot-type"), PersistentDataType.STRING, type.id.lowercase())
-    item.itemMeta = meta
+
+    @Suppress("UsePropertyAccessSyntax")
+    // TODO: Insert explanation of why this is necessary
+    item.setItemMeta(meta)
     return item
 }
 
